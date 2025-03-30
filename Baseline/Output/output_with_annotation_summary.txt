@@ -1,0 +1,7 @@
+Average Persona F1 Score over 5 runs: 0.160
+Individual scores:
+Run 1: 0.147
+Run 2: 0.153
+Run 3: 0.122
+Run 4: 0.153
+Run 5: 0.226

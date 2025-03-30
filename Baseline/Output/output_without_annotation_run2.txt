@@ -1,0 +1,13 @@
+Prompt:
+Document:
+Newton's second law states that the net force acting on an object is equal to the product of its mass and acceleration, expressed as F = ma. Here, F is the net force, m is the mass, and a is the acceleration. This law explains the quantitative relationship between force and motion. For example, if friction is neglected, a 2 kg object acted on by a 3 N force will experience an acceleration of 1.5 m/s².
+
+Question:
+In Newton's second law, does acceleration just mean speeding up?
+
+Please answer this question considering what the user is interested in, confused about, and has known.
+
+Response:
+Acceleration in Newton's second law doesn't strictly mean just speeding up. Acceleration is a vector quantity, which means it has both magnitude (speed) and direction. So, it can actually refer to speeding up, slowing down (also known as deceleration), or changing direction. That means if the net force causes a change in the object's velocity - either a change in its speed or its direction of motion - the object is considered to be accelerating under Newton's second law.
+
+Persona F1 Score: 0.212

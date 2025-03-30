@@ -4,7 +4,7 @@
   "annotations": [
     {
       "highlight": "F = ma",
-      "comment": "I know this formula, but I often get confused—what exactly causes acceleration? Is it just speeding up?"
+      "comment": "I know this formula, but I often get confused—what exactly causes acceleration?"
     },
     {
       "highlight": "if friction is neglected",
@@ -15,10 +15,10 @@
       "comment": "I like this kind of example with numbers—it makes it easier to understand."
     }
   ],
-  "question": "How do I know when it's okay to ignore friction in a problem? Also, does acceleration just mean speeding up?",
+  "question": "In Newton's second law, does acceleration just mean speeding up?",
   "persona": {
     "interests": ["numerical examples", "concrete calculations", "relationship between force and acceleration"],
-    "confusions": ["what exactly is acceleration", "when friction can be ignored"],
+    "confusions": ["what exactly causes acceleration", "when friction can be ignored"],
     "known_facts": ["F = ma is Newton's second law"]
   }
 }

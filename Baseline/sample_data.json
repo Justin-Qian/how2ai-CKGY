@@ -1,0 +1,24 @@
+{
+  "id": "sample_001",
+  "document_text": "Newton's second law states that the net force acting on an object is equal to the product of its mass and acceleration, expressed as F = ma. Here, F is the net force, m is the mass, and a is the acceleration. This law explains the quantitative relationship between force and motion. For example, if friction is neglected, a 2 kg object acted on by a 3 N force will experience an acceleration of 1.5 m/s².",
+  "annotations": [
+    {
+      "highlight": "F = ma",
+      "comment": "I know this formula, but I often get confused—what exactly causes acceleration? Is it just speeding up?"
+    },
+    {
+      "highlight": "if friction is neglected",
+      "comment": "In exams, they often say to neglect friction. How do I know when it's okay to do that?"
+    },
+    {
+      "highlight": "a 2 kg object acted on by a 3 N force will experience an acceleration of 1.5 m/s²",
+      "comment": "I like this kind of example with numbers—it makes it easier to understand."
+    }
+  ],
+  "question": "How do I know when it's okay to ignore friction in a problem? Also, does acceleration just mean speeding up?",
+  "persona": {
+    "interests": ["numerical examples", "concrete calculations", "relationship between force and acceleration"],
+    "confusions": ["what exactly is acceleration", "when friction can be ignored"],
+    "known_facts": ["F = ma is Newton's second law"]
+  }
+}

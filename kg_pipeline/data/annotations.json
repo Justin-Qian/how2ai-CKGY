@@ -1,0 +1,27 @@
+{
+    "username1": {
+      "document_uri_1": {
+        "title": "Privacy Laws Overview",
+        "annotations": [
+          {
+            "id": "a1",
+            "highlighted_text": "The GDPR mandates data protection.",
+            "comment": "Key regulation!",
+            "created": "2025-03-25T14:35:00Z",
+            "position": {
+              "start_char": 120,
+              "end_char": 160
+            },
+            "context": {
+              "preceding_text": "In the EU,",
+              "following_text": "It affects all organizations."
+            },
+            "annotation_type": "highlight",
+            "target_type": "text",
+            "tags": ["GDPR", "compliance"]
+          }
+        ]
+      }
+    }
+  }
+  

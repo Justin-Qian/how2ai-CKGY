@@ -1,0 +1,87 @@
+{
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+        {
+            "id": "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        },
+        {
+            "id": "LLMs capture vast amounts of implicit knowledge, while KGs store explicit structured information."
+        },
+        {
+            "id": "username1"
+        },
+        {
+            "id": "The roadmap outlines three frameworks: KG-enhanced LLMs, LLM-augmented KGs, and synergized LLMs+KGs."
+        },
+        {
+            "id": "framework classification"
+        },
+        {
+            "id": "KGAREVION: An AI Agent for Knowledge-Intensive Biomedical QA"
+        },
+        {
+            "id": "KGAREVION utilizes a generate-review-revise pipeline to construct biomedical knowledge graphs."
+        },
+        {
+            "id": "generate-review-revise pipeline"
+        },
+        {
+            "id": "The agent leverages a fine-tuned LLM to extract high-quality triples from biomedical texts."
+        },
+        {
+            "id": "fine-tuning LLM for precise triple extraction"
+        }
+    ],
+    "links": [
+        {
+            "predicate": "contains_statement",
+            "triple_type": "semantic",
+            "source": "Unifying Large Language Models and Knowledge Graphs: A Roadmap",
+            "target": "LLMs capture vast amounts of implicit knowledge, while KGs store explicit structured information."
+        },
+        {
+            "predicate": "details_frameworks",
+            "triple_type": "semantic",
+            "source": "Unifying Large Language Models and Knowledge Graphs: A Roadmap",
+            "target": "The roadmap outlines three frameworks: KG-enhanced LLMs, LLM-augmented KGs, and synergized LLMs+KGs."
+        },
+        {
+            "predicate": "indicates_importance_of",
+            "triple_type": "user_intent",
+            "source": "username1",
+            "target": "LLMs capture vast amounts of implicit knowledge, while KGs store explicit structured information."
+        },
+        {
+            "predicate": "expresses_interest_in",
+            "triple_type": "user_intent",
+            "source": "username1",
+            "target": "framework classification"
+        },
+        {
+            "predicate": "notes_method",
+            "triple_type": "user_intent",
+            "source": "username1",
+            "target": "generate-review-revise pipeline"
+        },
+        {
+            "predicate": "recognizes_technique",
+            "triple_type": "user_intent",
+            "source": "username1",
+            "target": "fine-tuning LLM for precise triple extraction"
+        },
+        {
+            "predicate": "describes_pipeline",
+            "triple_type": "semantic",
+            "source": "KGAREVION: An AI Agent for Knowledge-Intensive Biomedical QA",
+            "target": "KGAREVION utilizes a generate-review-revise pipeline to construct biomedical knowledge graphs."
+        },
+        {
+            "predicate": "demonstrates_extraction",
+            "triple_type": "semantic",
+            "source": "KGAREVION: An AI Agent for Knowledge-Intensive Biomedical QA",
+            "target": "The agent leverages a fine-tuned LLM to extract high-quality triples from biomedical texts."
+        }
+    ]
+}

@@ -1,0 +1,79 @@
+{
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+        {
+            "id": "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        },
+        {
+            "id": "LLMs capture vast amounts of implicit knowledge, while KGs store explicit structured information."
+        },
+        {
+            "id": "username1"
+        },
+        {
+            "id": "The roadmap outlines three frameworks: KG-enhanced LLMs, LLM-augmented KGs, and synergized LLMs+KGs."
+        },
+        {
+            "id": "framework classification"
+        },
+        {
+            "id": "KGAREVION: An AI Agent for Knowledge-Intensive Biomedical QA"
+        },
+        {
+            "id": "KGAREVION utilizes a generate-review-revise pipeline to construct biomedical knowledge graphs."
+        },
+        {
+            "id": "generate-review-revise pipeline"
+        },
+        {
+            "id": "The agent leverages a fine-tuned LLM to extract high-quality triples from biomedical texts."
+        },
+        {
+            "id": "fine-tuning LLM for precise triple extraction"
+        }
+    ],
+    "links": [
+        {
+            "predicate": "contains_statement",
+            "triple_type": "semantic",
+            "position": "45-140",
+            "context": "The paper discusses how ... This distinction is crucial for AI applications.",
+            "document_id": "document_uri_1",
+            "timestamp": "2025-04-01T09:15:00Z",
+            "source": "Unifying Large Language Models and Knowledge Graphs: A Roadmap",
+            "target": "LLMs capture vast amounts of implicit knowledge, while KGs store explicit structured information."
+        },
+        {
+            "predicate": "details_frameworks",
+            "triple_type": "semantic",
+            "position": "150-230",
+            "context": "Specifically, ... Each framework offers distinct benefits for knowledge integration.",
+            "document_id": "document_uri_1",
+            "timestamp": "2025-04-01T09:18:00Z",
+            "source": "Unifying Large Language Models and Knowledge Graphs: A Roadmap",
+            "target": "The roadmap outlines three frameworks: KG-enhanced LLMs, LLM-augmented KGs, and synergized LLMs+KGs."
+        },
+        {
+            "predicate": "describes_pipeline",
+            "triple_type": "semantic",
+            "position": "30-110",
+            "context": "The system is designed so that ... ensuring high quality and accurate representation.",
+            "document_id": "document_uri_2",
+            "timestamp": "2025-04-01T10:05:00Z",
+            "source": "KGAREVION: An AI Agent for Knowledge-Intensive Biomedical QA",
+            "target": "KGAREVION utilizes a generate-review-revise pipeline to construct biomedical knowledge graphs."
+        },
+        {
+            "predicate": "demonstrates_extraction",
+            "triple_type": "semantic",
+            "position": "120-210",
+            "context": "In its implementation, ... which significantly reduces errors.",
+            "document_id": "document_uri_2",
+            "timestamp": "2025-04-01T10:08:00Z",
+            "source": "KGAREVION: An AI Agent for Knowledge-Intensive Biomedical QA",
+            "target": "The agent leverages a fine-tuned LLM to extract high-quality triples from biomedical texts."
+        }
+    ]
+}

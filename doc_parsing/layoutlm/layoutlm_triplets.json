@@ -1,0 +1,2410 @@
+[
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "reliable processing systems",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(153.11300659179688, 342.0419921875, 263.4339904785156, 351.4779968261719)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "reliable processing systems",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "multimodal interface",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(287.1159973144531, 331.72198486328125, 364.9800109863281, 341.1579895019531)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "multimodal interface",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "analyze",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(308.6369934082031, 342.0419921875, 336.6319885253906, 351.4779968261719)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "analyze",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "understand",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(364.93701171875, 342.0419921875, 404.93701171875, 351.4779968261719)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "understand",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "reliable processing systems able to analyze and understand multiple \ncommunication means in real-time. This opens a number of associated issues",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(153.11300659179688, 342.0419921875, 442.8630065917969, 362.0379943847656)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "reliable processing systems able to analyze and understand multiple \ncommunication means in real-time. This opens a number of associated issues",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "heterogeneous data types fusion,",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(273.8900146484375, 362.9219970703125, 391.6610107421875, 372.35699462890625)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "heterogeneous data types fusion,",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "architectures",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(396.33599853515625, 362.9219970703125, 442.8450012207031, 372.35699462890625)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "architectures",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "real-time",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(166.45899963378906, 373.24200439453125, 199.45199584960938, 382.677001953125)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "real-time",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "dialog management,",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(245.38400268554688, 373.24200439453125, 317.2460021972656, 382.677001953125)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "dialog management,",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "machine learning",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(321.8139953613281, 373.24200439453125, 385.1510009765625, 382.677001953125)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "machine learning",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "for real-time processing, dialog management, machine learning for multimodal \ninteraction, modeling languages, frameworks, etc.  This chapter does not intend",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(153.11300659179688, 373.24200439453125, 442.8800048828125, 393.23699951171875)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "for real-time processing, dialog management, machine learning for multimodal \ninteraction, modeling languages, frameworks, etc.  This chapter does not intend",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "modeling languages,",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(196.3939971923828, 383.802001953125, 269.4360046386719, 393.23699951171875)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "modeling languages,",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "outline of the current state of multimodal interaction",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(220.6540069580078, 477.1619873046875, 410.6099853515625, 486.5979919433594)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "outline of the current state of multimodal interaction",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "multimodal interfaces",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(213.7259979248047, 581.2919921875, 301.7489929199219, 591.7470092773438)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "multimodal interfaces",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "more “human” way",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(336.052001953125, 581.2919921875, 414.94500732421875, 591.7470092773438)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "more “human” way",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "y means of speech, gestures or other modalities",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(204.01300048828125, 592.81201171875, 393.72100830078125, 603.2680053710938)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "y means of speech, gestures or other modalities",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "preferred over unimodal interfaces by users",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 604.33203125, 311.36199951171875, 614.7869873046875)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "preferred over unimodal interfaces by users",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "flexibility",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(327.36700439453125, 615.8519897460938, 367.3219909667969, 626.3070068359375)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "flexibility",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "reliability",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(387.5580139160156, 615.8519897460938, 426.9419860839844, 626.3070068359375)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "reliability",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_1",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "Cognitive psychologists have extensively studied how humans perceive, process, \nand express multimodal information; their conclusions are of interest for developers",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 195.13299560546875, 471.07000732421875, 217.10797119140625)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_2",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "Cognitive psychologists have extensively studied how humans perceive, process, \nand express multimodal information; their conclusions are of interest for developers",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_2",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "definition o",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(415.1210021972656, 287.531982421875, 453.92498779296875, 297.98699951171875)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_2",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "definition o",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_2",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "number of languages dedicated to multimodal data description,",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 299.052001953125, 384.17999267578125, 309.50701904296875)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_2",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "number of languages dedicated to multimodal data description,",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_2",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "cognitive foundations to development tools,",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(291.4419860839844, 345.13299560546875, 470.9779968261719, 355.5880126953125)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_2",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "cognitive foundations to development tools,",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_2",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "multimodal interaction",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(268.8190002441406, 239.531982421875, 360.6809997558594, 249.98699951171875)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "multimodal interaction",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "set of “modalities”",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(395.42999267578125, 239.531982421875, 470.93798828125, 249.98699951171875)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "set of “modalities”",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "interact with the machine.",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(242.78199768066406, 251.052001953125, 355.6319885253906, 261.50701904296875)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "interact with the machine.",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "allow",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(176.78599548339844, 251.052001953125, 199.49200439453125, 261.50701904296875)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "allow",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "speech, pen, touch, manual gesture, gaze, and head and body movements)",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 274.3330078125, 444.59698486328125, 284.7869873046875)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "speech, pen, touch, manual gesture, gaze, and head and body movements)",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "coordinated manner",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 285.85198974609375, 210.35499572753906, 296.3070068359375)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "coordinated manner",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "multimedia system output.",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(239.45700073242188, 285.85198974609375, 349.6409912109375, 296.3070068359375)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "multimedia system output.",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "unique features of",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(255.718994140625, 320.4119873046875, 337.88800048828125, 330.86700439453125)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "unique features of",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "fusion of different types of data;",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(219.46400451660156, 331.9320068359375, 353.07598876953125, 342.38800048828125)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "fusion of different types of data;",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "real-time processing",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(388.4309997558594, 331.9320068359375, 471.0840148925781, 342.38800048828125)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "real-time processing",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "temporal constraints",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(141.66700744628906, 343.4530029296875, 223.54800415039062, 353.9079895019531)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "temporal constraints",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "twofold:",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(376.6669921875, 389.7720031738281, 411.12200927734375, 400.22698974609375)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "twofold:",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "five senses. Hence, the objective of multimodal interfaces is twofold: (1) to support \nand accommodate users’ perceptual and communicative capabilities; and (2) to",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 389.7720031738281, 471.0469970703125, 411.74700927734375)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "five senses. Hence, the objective of multimodal interfaces is twofold: (1) to support \nand accommodate users’ perceptual and communicative capabilities; and (2) to",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "integrate computational skills of computers in the real world,",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 412.81298828125, 370.2250061035156, 423.26800537109375)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "integrate computational skills of computers in the real world,",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "natural",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(442.7799987792969, 412.81298828125, 471.10400390625, 423.26800537109375)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "natural",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "interaction",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(158.61199951171875, 424.3320007324219, 201.88299560546875, 434.7869873046875)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "interaction",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "however, evaluations showed that multimodal interfaces only speed up task \ncompletion by 10% [50]. Hence, efficiency should not be considered the main",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 447.37200927734375, 471.10699462890625, 469.34698486328125)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "however, evaluations showed that multimodal interfaces only speed up task \ncompletion by 10% [50]. Hence, efficiency should not be considered the main",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "improve error handling & reliability: users made 36% fewer errors",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(189.7949981689453, 482.1719970703125, 471.12298583984375, 492.62799072265625)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "improve error handling & reliability: users made 36% fewer errors",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_3",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "Table 1. Differences between GUIs and MUIs.",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(204.6199951171875, 195.13299560546875, 391.2229919433594, 205.5880126953125)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_4",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "Table 1. Differences between GUIs and MUIs.",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_4",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "WIMP",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(187.61500549316406, 300.97198486328125, 215.3679962158203, 311.427001953125)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_4",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "WIMP",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_4",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "e is used to control the position",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(246.86700439453125, 312.49200439453125, 373.0889892578125, 322.947998046875)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_4",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "e is used to control the position",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_4",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "singular physical input device is used to control the position of a cursor and present \ninformation organized in windows and represented with icons. In contrast, in",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 312.49200439453125, 470.947998046875, 334.4679870605469)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_4",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "singular physical input device is used to control the position of a cursor and present \ninformation organized in windows and represented with icons. In contrast, in",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_4",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "multimodal interfaces,",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 335.5320129394531, 216.0919952392578, 345.98699951171875)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_4",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "multimodal interfaces,",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_4",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "various modalities",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(223.91000366210938, 335.5320129394531, 301.3949890136719, 345.98699951171875)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_4",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "various modalities",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_4",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "multimodal interfaces, various modalities can be used as input streams (voice, \ngestures, facial expressions, etc.). Further, input from graphical user interfaces is",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 335.5320129394531, 471.1499938964844, 357.50799560546875)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_4",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "multimodal interfaces, various modalities can be used as input streams (voice, \ngestures, facial expressions, etc.). Further, input from graphical user interfaces is",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_4",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "cognitive psychology reveal: \nocess modalities partially in",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(254.98599243164062, 588.011962890625, 371.1059875488281, 598.4669799804688)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_4",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "cognitive psychology reveal: \nocess modalities partially in",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_4",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "in cognitive psychology reveal: \nprocess modalities partially independently and,\nn with multiple modalities increases human w",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(243.1060028076172, 596.9169921875, 443.614990234375, 610.64501953125)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_4",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "in cognitive psychology reveal: \nprocess modalities partially independently and,\nn with multiple modalities increases human w",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_4",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "humans are able to process modalities partially independently and, thus, \npresenting information with multiple modalities increases human working \nmemory;",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(151.63600158691406, 608.43701171875, 471.072998046875, 633.6849975585938)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_4",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "humans are able to process modalities partially independently and, thus, \npresenting information with multiple modalities increases human working \nmemory;",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_4",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "reproduce interpersonal interaction \n a system;",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(216.7169952392578, 635.3170166015625, 358.3420104980469, 649.0449829101562)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_4",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "reproduce interpersonal interaction \n a system;",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_4",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "processing both auditory and visual information",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(205.99099731445312, 148.81298828125, 401.4280090332031, 159.26702880859375)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "processing both auditory and visual information",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "able to extract a higher rate of lexical intelligibility",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(168.46200561523438, 160.3330078125, 383.3810119628906, 170.7869873046875)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "able to extract a higher rate of lexical intelligibility",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "handling visual and auditory material.” The authors argued that if working memory is \na primary limitation in learning, then increasing effective working memory by",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 252.73199462890625, 471.0899963378906, 274.7080078125)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "handling visual and auditory material.” The authors argued that if working memory is \na primary limitation in learning, then increasing effective working memory by",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "assumes a limited working memory in which all conscious learning and thinking \noccurs, and an effectively unlimited long-term memory that holds a large number of",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 333.61199951171875, 470.93798828125, 355.5880126953125)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "assumes a limited working memory in which all conscious learning and thinking \noccurs, and an effectively unlimited long-term memory that holds a large number of",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "occurs, and an effectively unlimited long-term memory that holds a large number of \nautomated schemas that can be brought into working memory for processing. Oviatt",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 345.13299560546875, 471.0719909667969, 367.10699462890625)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "occurs, and an effectively unlimited long-term memory that holds a large number of \nautomated schemas that can be brought into working memory for processing. Oviatt",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "brought into working memory for processing.",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(255.25, 356.6520080566406, 440.2760009765625, 367.10699462890625)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "brought into working memory for processing.",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "d short-term or working memory",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(222.06500244140625, 518.4119873046875, 353.7170104980469, 528.8670043945312)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "d short-term or working memory",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "Baddeley [5], described short-term or working memory as being composed of three \nmain components: the central executive (which acts as supervisory system and",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 518.4119873046875, 471.0989990234375, 540.3880004882812)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "Baddeley [5], described short-term or working memory as being composed of three \nmain components: the central executive (which acts as supervisory system and",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "central executive",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(224.98899841308594, 529.9320068359375, 296.6679992675781, 540.3880004882812)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "central executive",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "phonological loop,",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(296.6300048828125, 541.4530029296875, 373.052001953125, 551.907958984375)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "phonological loop,",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "controls the flow of information), the phonological loop, and the visuo-spatial \nsketchpad, with the latter two dedicated to auditory-verbal and visuo-spatial",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 541.4530029296875, 471.1409912109375, 563.427001953125)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "controls the flow of information), the phonological loop, and the visuo-spatial \nsketchpad, with the latter two dedicated to auditory-verbal and visuo-spatial",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "dedicated to auditory-verbal",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(268.6029968261719, 552.9719848632812, 391.2510070800781, 563.427001953125)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "dedicated to auditory-verbal",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "two",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(246.41600036621094, 552.9719848632812, 261.9490051269531, 563.427001953125)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "two",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "sketchpad, with the latter two dedicated to auditory-verbal and visuo-spatial \ninformation processing, respectively. Although these two slave processors are",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 552.9719848632812, 471.1409912109375, 574.947998046875)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "sketchpad, with the latter two dedicated to auditory-verbal and visuo-spatial \ninformation processing, respectively. Although these two slave processors are",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "central executive,",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(198.06399536132812, 576.0130004882812, 267.99200439453125, 586.468017578125)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "central executive,",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "coordinated by a central executive, they function largely independently in terms of \nlower-level modality processing. This model was derived from experimental findings",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 576.0130004882812, 471.0610046386719, 598.2269897460938)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "coordinated by a central executive, they function largely independently in terms of \nlower-level modality processing. This model was derived from experimental findings",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "two simultaneous tasks",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(296.16400146484375, 599.2919921875, 389.8160095214844, 609.7470092773438)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "two simultaneous tasks",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "two perceptual domains",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 610.81201171875, 221.38600158691406, 621.2680053710938)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "two perceptual domains",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "out two tasks simultaneously",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 633.8519897460938, 241.0659942626953, 644.3070068359375)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "out two tasks simultaneously",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "use the same perceptual domain,",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(260.5350036621094, 633.8519897460938, 388.78399658203125, 644.3070068359375)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "use the same perceptual domain,",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "out two tasks simultaneously that use the same perceptual domain, performance is less \nefficient than when performing the tasks individually. As such, human performance is",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 633.8519897460938, 470.98699951171875, 655.8270263671875)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "out two tasks simultaneously that use the same perceptual domain, performance is less \nefficient than when performing the tasks individually. As such, human performance is",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "improved",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 656.8919677734375, 163.5760040283203, 667.3469848632812)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "improved",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "two modalities",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(258.92999267578125, 656.8919677734375, 319.5400085449219, 667.3469848632812)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "two modalities",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "improved when interacting with two modalities that can be co-processed in separate \nstores.",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 656.8919677734375, 471.0790100097656, 678.8679809570312)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "improved when interacting with two modalities that can be co-processed in separate \nstores.",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_5",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "coordination",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(313.0799865722656, 160.3330078125, 364.1340026855469, 170.7869873046875)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_6",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "coordination",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_6",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "n user input",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(402.29901123046875, 160.3330078125, 451.0899963378906, 170.7869873046875)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_6",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "n user input",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_6",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "system output modes",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 171.85198974609375, 214.68499755859375, 182.3070068359375)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_6",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "system output modes",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_6",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "interference during human task processing involving different modes. The four \ndimensions considered are stages (perceptual/cognitive vs. response), sensory \nmodalities (auditory vs. visual), codes (visual vs. spatial) and channels of visual \ninformation (focal vs. ambient).",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 195.13299560546875, 471.0559997558594, 240.14697265625)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_6",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "interference during human task processing involving different modes. The four \ndimensions considered are stages (perceptual/cognitive vs. response), sensory \nmodalities (auditory vs. visual), codes (visual vs. spatial) and channels of visual \ninformation (focal vs. ambient).",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_6",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "10 myths of multimodal interaction",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(163.3699951171875, 516.7319946289062, 304.4179992675781, 527.18798828125)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_6",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "10 myths of multimodal interaction",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_6",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "surveys [8][26][51][54][62]. The following concepts are popularly accepted: fusion \n(also called multimodal signal integration), fission (also called response planning),",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 533.77197265625, 471.0929870605469, 555.7470092773438)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_7",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "surveys [8][26][51][54][62]. The following concepts are popularly accepted: fusion \n(also called multimodal signal integration), fission (also called response planning),",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_7",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "dialog management, context management and time-sensitive architectures.",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 556.81298828125, 440.0379943847656, 567.2680053710938)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_7",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "dialog management, context management and time-sensitive architectures.",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_7",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "When a human interacts with a machine, his communication can be divided in four \ndifferent states. The first state is a decision state, in which the communication",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(124.73300170898438, 408.73199462890625, 471.14300537109375, 430.7080078125)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_8",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "When a human interacts with a machine, his communication can be divided in four \ndifferent states. The first state is a decision state, in which the communication",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_8",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "first state is a decision state,",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(215.45700073242188, 420.25299072265625, 340.5580139160156, 430.7080078125)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_8",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "first state is a decision state,",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_8",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    },
+    {
+        "type": "semantic",
+        "subject": "document_title_here",
+        "predicate": "contains_statement",
+        "object": "second state is the action state,",
+        "attributes": {
+            "source": "highlight",
+            "position": "Rect(285.67498779296875, 443.2919921875, 421.4460144042969, 453.74700927734375)",
+            "context": "Text near highlight on the same page.",
+            "document_id": "page_8",
+            "timestamp": "2025-04-01T09:00:00Z"
+        }
+    },
+    {
+        "type": "user_intent",
+        "subject": "username1",
+        "predicate": "marked_important",
+        "object": "second state is the action state,",
+        "attributes": {
+            "comment": "Chung-Ta Huang",
+            "source": "comment",
+            "document_id": "page_8",
+            "timestamp": "2025-04-01T09:00:00Z",
+            "tags": [
+                "highlight"
+            ]
+        }
+    }
+]

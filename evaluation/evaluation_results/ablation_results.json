@@ -1,0 +1,32 @@
+{
+    "full_method": {
+        "interests_f1": 0.08477094001452078,
+        "confusions_f1": 0.06550782757679309,
+        "known_facts_f1": 0.13467920353982302,
+        "overall_f1": 0.09498599037704562
+    },
+    "wo_user_intent": {
+        "interests_f1": 0.08141848141848142,
+        "confusions_f1": 0.07332731248260807,
+        "known_facts_f1": 0.1376449151238016,
+        "overall_f1": 0.09746356967496368
+    },
+    "wo_semantic": {
+        "interests_f1": 0.07049139779035894,
+        "confusions_f1": 0.05764386292700117,
+        "known_facts_f1": 0.12829594647776466,
+        "overall_f1": 0.08547706906504159
+    },
+    "wo_attributes": {
+        "interests_f1": 0.08625407617435882,
+        "confusions_f1": 0.07925828843260035,
+        "known_facts_f1": 0.12894570707070707,
+        "overall_f1": 0.09815269055922209
+    },
+    "text_only": {
+        "interests_f1": 0.08702554465972913,
+        "confusions_f1": 0.07899509986200286,
+        "known_facts_f1": 0.1292362343321615,
+        "overall_f1": 0.0984189596179645
+    }
+}

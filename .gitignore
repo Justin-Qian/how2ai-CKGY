@@ -1,0 +1,16 @@
+# Virtual Environment
+venv/
+env/
+.env/
+.venv/
+ENV/
+
+# API Keys and Secrets
+.env
+*.env
+.env.*
+config.json
+secrets.json
+credentials.json
+*_key.json
+*_keys.json

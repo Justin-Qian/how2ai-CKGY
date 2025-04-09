@@ -3,11 +3,20 @@ import matplotlib.pyplot as plt
 import openai
 import re
 import json
+import os
+from dotenv import load_dotenv
 
-openai.api_key = ""
+# Load environment variables from .env file
+load_dotenv()
 
+# Get API key from environment variable
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
-def load_kg(filename="kg.json"):
+# If API key is not found, print a warning
+if not openai.api_key:
+    print("WARNING: OpenAI API key not found. Please set the OPENAI_API_KEY environment variable.")
+
+def load_kg(filename="evaluation/evaluation_data/kg.json"):
     try:
         with open(filename, "r", encoding="utf-8") as f:
             data = json.load(f)

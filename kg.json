@@ -1,0 +1,137 @@
+{
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+        {
+            "id": "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        },
+        {
+            "id": "LLMs capture vast amounts of implicit knowledge, while KGs store explicit structured information."
+        },
+        {
+            "id": "username1"
+        },
+        {
+            "id": "The roadmap outlines three frameworks: KG-enhanced LLMs, LLM-augmented KGs, and synergized LLMs+KGs."
+        },
+        {
+            "id": "framework classification"
+        },
+        {
+            "id": "KGAREVION: An AI Agent for Knowledge-Intensive Biomedical QA"
+        },
+        {
+            "id": "KGAREVION utilizes a generate-review-revise pipeline to construct biomedical knowledge graphs."
+        },
+        {
+            "id": "generate-review-revise pipeline"
+        },
+        {
+            "id": "The agent leverages a fine-tuned LLM to extract high-quality triples from biomedical texts."
+        },
+        {
+            "id": "fine-tuning LLM for precise triple extraction"
+        }
+    ],
+    "links": [
+        {
+            "predicate": "contains_statement",
+            "triple_type": "semantic",
+            "source": "Unifying Large Language Models and Knowledge Graphs: A Roadmap",
+            "position": "45-140",
+            "context": "The paper discusses how ... This distinction is crucial for AI applications.",
+            "document_id": "document_uri_1",
+            "timestamp": "2025-04-01T09:15:00Z",
+            "target": "LLMs capture vast amounts of implicit knowledge, while KGs store explicit structured information."
+        },
+        {
+            "predicate": "details_frameworks",
+            "triple_type": "semantic",
+            "source": "Unifying Large Language Models and Knowledge Graphs: A Roadmap",
+            "position": "150-230",
+            "context": "Specifically, ... Each framework offers distinct benefits for knowledge integration.",
+            "document_id": "document_uri_1",
+            "timestamp": "2025-04-01T09:18:00Z",
+            "target": "The roadmap outlines three frameworks: KG-enhanced LLMs, LLM-augmented KGs, and synergized LLMs+KGs."
+        },
+        {
+            "predicate": "indicates_importance_of",
+            "triple_type": "user_intent",
+            "comment": "This sentence summarizes the core advantage of integrating LLMs with KGs.",
+            "source": "username1",
+            "document_id": "document_uri_1",
+            "timestamp": "2025-04-01T09:15:00Z",
+            "tags": [
+                "LLM",
+                "KG",
+                "integration",
+                "implicit knowledge"
+            ],
+            "target": "LLMs capture vast amounts of implicit knowledge, while KGs store explicit structured information."
+        },
+        {
+            "predicate": "expresses_interest_in",
+            "triple_type": "user_intent",
+            "comment": "This classification of frameworks highlights different strategies for knowledge integration.",
+            "source": "username1",
+            "document_id": "document_uri_1",
+            "timestamp": "2025-04-01T09:18:00Z",
+            "tags": [
+                "framework",
+                "classification",
+                "integration"
+            ],
+            "target": "framework classification"
+        },
+        {
+            "predicate": "notes_method",
+            "triple_type": "user_intent",
+            "comment": "This method inspires our approach for validating and refining attributed triples.",
+            "source": "username1",
+            "document_id": "document_uri_2",
+            "timestamp": "2025-04-01T10:05:00Z",
+            "tags": [
+                "generate-review-revise",
+                "pipeline",
+                "biomedical"
+            ],
+            "target": "generate-review-revise pipeline"
+        },
+        {
+            "predicate": "recognizes_technique",
+            "triple_type": "user_intent",
+            "comment": "The core technology lies in fine-tuning the LLM to generate precise knowledge representations.",
+            "source": "username1",
+            "document_id": "document_uri_2",
+            "timestamp": "2025-04-01T10:08:00Z",
+            "tags": [
+                "fine-tuning",
+                "LLM",
+                "quality",
+                "triples"
+            ],
+            "target": "fine-tuning LLM for precise triple extraction"
+        },
+        {
+            "predicate": "describes_pipeline",
+            "triple_type": "semantic",
+            "source": "KGAREVION: An AI Agent for Knowledge-Intensive Biomedical QA",
+            "position": "30-110",
+            "context": "The system is designed so that ... ensuring high quality and accurate representation.",
+            "document_id": "document_uri_2",
+            "timestamp": "2025-04-01T10:05:00Z",
+            "target": "KGAREVION utilizes a generate-review-revise pipeline to construct biomedical knowledge graphs."
+        },
+        {
+            "predicate": "demonstrates_extraction",
+            "triple_type": "semantic",
+            "source": "KGAREVION: An AI Agent for Knowledge-Intensive Biomedical QA",
+            "position": "120-210",
+            "context": "In its implementation, ... which significantly reduces errors.",
+            "document_id": "document_uri_2",
+            "timestamp": "2025-04-01T10:08:00Z",
+            "target": "The agent leverages a fine-tuned LLM to extract high-quality triples from biomedical texts."
+        }
+    ]
+}

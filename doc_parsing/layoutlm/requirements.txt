@@ -1,0 +1,8 @@
+transformers
+torch
+PyMuPDF
+Pillow
+pydantic
+python-dotenv
+openai
+numpy

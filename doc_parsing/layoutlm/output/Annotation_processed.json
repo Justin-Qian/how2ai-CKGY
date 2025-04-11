@@ -1,0 +1,33 @@
+{
+    "metadata": {
+        "filename": "Annotation.pdf",
+        "total_pages": 1,
+        "processing_timestamp": "2025-04-10T13:59:16.638588"
+    },
+    "pages": [
+        {
+            "page_number": 1,
+            "dimensions": [
+                612.0,
+                792.0
+            ],
+            "text_blocks": [],
+            "annotations": [],
+            "visual_elements": [
+                {
+                    "type": "figure",
+                    "bbox": {
+                        "x0": 73.5,
+                        "y0": 73.5,
+                        "x1": 541.5,
+                        "y1": 671.25
+                    },
+                    "vlm_description": "The image contains handwritten notes on grid paper, covering topics related to causal inference and randomized control trials. It is divided into two sections: \"9.1 Notes (L2)\" and \"9.2 Notes.\"\n\n### 9.1 Notes (L2)\n- **Causal Inference (2):** \n  - Highlights the need to be mindful of:\n    - \"(1) Cov w/o caus\"\n    - \"(2) Simpson’s Paradox\"\n- **Individual Treatment Effect (ITE):** \n  - Defined as \\(Y_i(1) - Y_i(0)\\)\n- **Average Treatment Effect (ATE):** \n  - Given as \\(E[Y | T=1] - E[Y | T=0]\\)\n- **Randomized Control Trials:**\n  - Emphasizes the importance of randomizing subjects into treatment and control groups.\n\n### 9.2 Notes\n- **Randomized experiments:**\n  - Described as the gold standard.\n- **Completely Randomized Design (CRD):**\n  - Describes having two treatment groups and assigning people so each group has \\(n\\) people.\n  - References an AB test.\n  - Example given: \"Google’s Blue study\" involving different shades of blue tested for click-through rates.\n- **Equation via LOTP:** \n  - \\[E[Y] = E[Y|t,c]\\]\n  - \\[\\sum E[Y|t,c]P(c)\\]\n",
+                    "vlm_structured_data": null,
+                    "associated_text_indices": null
+                }
+            ],
+            "image_path": null
+        }
+    ]
+}

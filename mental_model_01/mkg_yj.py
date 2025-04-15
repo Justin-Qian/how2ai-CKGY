@@ -108,8 +108,12 @@ mkg.clusters.append(ConceptCluster(
 # Update the model with user input
 mkg.update(doc_id=1, highlight="traverse", tag="notknow")
 mkg.update(doc_id=2, highlight="scan", tag="know")
-mkg.update(doc_id=3, highlight="sort", tag="notknow")
-mkg.update(doc_id=4, highlight="order", tag="know")
+mkg.update(doc_id=3, highlight="binary tree traverse", tag="know")
+mkg.update(doc_id=4, highlight="sort", tag="notknow")
+mkg.update(doc_id=5, highlight="order", tag="notknow")
+mkg.update(doc_id=5, highlight="reddix sort", tag="notknow")
+mkg.update(doc_id=6, highlight="bubble sort", tag="know")
+
 
 # Print current cluster status
 for c in mkg.clusters:

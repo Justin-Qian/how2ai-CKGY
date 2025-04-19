@@ -4,6 +4,7 @@ from openai import OpenAI, OpenAIError
 from PIL import Image
 from typing import Optional, Dict, Any
 from dotenv import load_dotenv
+from . import config
 
 # Load environment variables from .env file
 load_dotenv()

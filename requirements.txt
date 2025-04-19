@@ -1,0 +1,19 @@
+# Document Processing
+PyMuPDF==1.22.1  # For PDF processing
+Pillow>=9.0.0   # For image handling
+pydantic>=2.0.0 # For data validation and serialization
+
+# NLP and ML
+transformers>=4.28.0  # For LayoutLM and other transformer models
+sentence-transformers>=2.2.2  # For semantic embeddings
+scikit-learn>=1.2.2  # For clustering and metrics
+numpy>=1.24.0
+torch>=2.0.0
+
+# GNN
+torch-geometric>=2.3.0  # GNN framework
+networkx>=3.0  # For graph visualization and analysis
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.2 

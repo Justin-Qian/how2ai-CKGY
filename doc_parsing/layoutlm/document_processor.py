@@ -8,15 +8,15 @@ from typing import List
 import argparse # Added import
 
 # Import configurations and data structures
-import config
-from data_structures import (
+from . import config
+from .data_structures import (
     ProcessedDocument, DocumentMetadata, PageData,
     TextBlock, BoundingBox, Annotation, VisualElement
 )
 
 # Import helper functions
-from layoutlm_utils import extract_layoutlm_features, preprocess_image_for_layoutlm
-from vlm_utils import analyze_image_region_with_vlm
+from .layoutlm_utils import extract_layoutlm_features, preprocess_image_for_layoutlm
+from .vlm_utils import analyze_image_region_with_vlm
 
 def pdf_coords_to_bbox(rect: fitz.Rect) -> BoundingBox:
     """Converts PyMuPDF Rect coordinates to our BoundingBox model."""

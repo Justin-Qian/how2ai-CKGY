@@ -1,0 +1,20 @@
+# Core ML/GNN Libraries
+torch
+torch_geometric
+
+# Text Embeddings
+sentence-transformers
+
+# Utilities & Metrics
+scikit-learn
+numpy
+pandas
+
+# Plotting (for evaluation)
+seaborn
+matplotlib
+
+# Add specific versions if needed, e.g.:
+# torch==2.0.1
+# torch_geometric==2.4.0
+# sentence-transformers==2.7.0

@@ -2,6 +2,7 @@ import torch
 from transformers import LayoutLMv3Processor, LayoutLMv3Model
 from PIL import Image
 from typing import List, Tuple
+from . import config
 
 # Assuming config.py is in the same directory or accessible
 try:

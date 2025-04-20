@@ -90,7 +90,7 @@ Run scripts from the **workspace root directory** (`How2AI/how2ai-CKGY/` or equi
 Earlier iterations of related projects may have explored Graph Neural Networks (GNNs) for document understanding, but this specific pipeline focuses on the combination of LayoutLM, rule-based extraction, CV, and VLM analysis for annotated PDFs.
 
 ## Contribution
-Kida Huang
+Kida Huang - Developer and maintainer of the extraction system
 
 ## License
 

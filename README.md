@@ -1,10 +1,10 @@
-# Multimodal Research Paper Annotation Extractor
+# Multimodal Annotation
 
-This project provides a pipeline to extract rich information from annotated research paper PDFs, combining layout analysis, text extraction, annotation detection (native and CV-based), and Vision Language Model (VLM) analysis for figures, drawings, and equations.
+The current implementation provides a pipeline to extract rich information from annotated research paper PDFs, combining layout analysis, text extraction, annotation detection (native and CV-based), and Vision Language Model (VLM) analysis for figures, drawings, and equations.
 
 ## Overview
 
-The system processes PDF documents page by page to extract:
+The extraction system ```doc_parsing``` processes PDF documents page by page to extract:
 
 *   **Text Content & Layout:** Using PyMuPDF for initial text/word extraction and bounding boxes.
 *   **Layout Features:** Employing `microsoft/layoutlmv3-base` (via Hugging Face `transformers`) to understand document layout (though embeddings are not stored in the final JSON by default).
@@ -89,9 +89,8 @@ Run scripts from the **workspace root directory** (`How2AI/how2ai-CKGY/` or equi
 
 Earlier iterations of related projects may have explored Graph Neural Networks (GNNs) for document understanding, but this specific pipeline focuses on the combination of LayoutLM, rule-based extraction, CV, and VLM analysis for annotated PDFs.
 
-## Contributing
-
-(Add contribution guidelines if applicable)
+## Contribution
+Kida Huang
 
 ## License
 

@@ -18,10 +18,14 @@ class TextBlock(BaseModel):
 
 class Annotation(BaseModel):
     """Represents an annotation (highlight, comment, etc.) in the document."""
-    type: str # e.g., "highlight", "underline", "comment"
+    type: str # e.g., "highlight", "underline", "comment", "ink"
     bbox: BoundingBox
     text_content: Optional[str] = None # Text covered by the annotation
     comment_info: Optional[Dict[str, Any]] = None # e.g., {"author": "user", "comment": "text"}
+    color: Optional[Dict[str, Tuple[float, float, float]]] = None # e.g., {'stroke': (r,g,b), 'fill': (r,g,b)} - colors normalized to 0-1 range
+    vertices: Optional[List[List[Tuple[float, float]]]] = None # For 'ink' annotations (list of paths, each path is a list of (x,y) points)
+    semantic_tag: Optional[str] = None # Interpreted meaning (e.g., 'important', 'question', 'definition')
+    detected_color_name: Optional[str] = None # Name of color detected by CV (e.g., 'yellow')
 
 class VisualElement(BaseModel):
     """Represents a visual element like a figure or table identified in the document."""
@@ -33,6 +37,13 @@ class VisualElement(BaseModel):
     # Optional: Reference to nearby text blocks
     associated_text_indices: Optional[List[int]] = None
 
+class EquationElement(BaseModel):
+    """Represents an equation identified in the document, potentially with VLM transcription."""
+    type: str = "equation" # Fixed type
+    bbox: BoundingBox
+    vlm_transcription: Optional[str] = None # LaTeX or text transcription from VLM
+    detection_source: Optional[str] = None # How it was detected (e.g., 'layout_heuristic', 'symbol_check')
+
 class PageData(BaseModel):
     """Represents all extracted data for a single page."""
     page_number: int
@@ -40,6 +51,7 @@ class PageData(BaseModel):
     text_blocks: List[TextBlock] = Field(default_factory=list)
     annotations: List[Annotation] = Field(default_factory=list)
     visual_elements: List[VisualElement] = Field(default_factory=list)
+    equations: List[EquationElement] = Field(default_factory=list)
     # Optional: Path to the preprocessed image for this page
     image_path: Optional[str] = None
 

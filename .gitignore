@@ -14,3 +14,25 @@ secrets.json
 credentials.json
 *_key.json
 *_keys.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# cache
+cache/
+
+# logs
+logs/
+
+# temp
+temp/
+
+# IDE / Editor specific
+.vscode/
+.idea/
+
+# OS specific
+.DS_Stores
+Thumbs.db

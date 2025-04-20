@@ -2,19 +2,38 @@ import torch
 from transformers import LayoutLMv3Processor, LayoutLMv3Model
 from PIL import Image
 from typing import List, Tuple
-from . import config
+import os # Import os
 
-# Assuming config.py is in the same directory or accessible
+# --- Robust Config Loading ---
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 try:
-    import config
+    from . import config 
 except ImportError:
-    # Fallback or default values if config.py is not found
-    # This might happen if running the script from a different context
-    print("Warning: config.py not found. Using default model name.")
-    config = type('obj', (object,), {'LAYOUTLM_MODEL_NAME': 'microsoft/layoutlmv3-base', 'LAYOUTLM_IMAGE_SIZE': (224, 224)})()
+    print("Warning: Relative import of config failed in layoutlm_utils. Attempting fallback.")
+    try:
+        import config 
+    except ImportError:
+        print("ERROR: config.py not found in layoutlm_utils. Using hardcoded defaults.")
+        config = type('obj', (object,), {
+            'LAYOUTLM_MODEL_NAME': 'microsoft/layoutlmv3-base', 
+            'LAYOUTLM_IMAGE_SIZE': (224, 224)
+        })()
 
+# Determine device (GPU or CPU)
+# Check explicitly if CUDA is available AND properly initialized
+try:
+    if torch.cuda.is_available() and torch.cuda.device_count() > 0:
+        # Perform a quick operation to ensure CUDA is truly working
+        _ = torch.tensor([1.0]).cuda()
+        device = torch.device("cuda")
+        print(f"CUDA available. Using device: {torch.cuda.get_device_name(0)}")
+    else:
+        device = torch.device("cpu")
+        print("CUDA not available or not initialized. Using CPU.")
+except Exception as e:
+    print(f"Error during CUDA check: {e}. Falling back to CPU.")
+    device = torch.device("cpu")
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 _processor = None
 _model = None

@@ -1,104 +1,98 @@
-# how2ai-CKGY
+# Multimodal Research Paper Annotation Extractor
 
-## Knowledge Modeling Pipeline Overview
+This project provides a pipeline to extract rich information from annotated research paper PDFs, combining layout analysis, text extraction, annotation detection (native and CV-based), and Vision Language Model (VLM) analysis for figures, drawings, and equations.
 
-Integrates document processing with concept clustering and graph neural networks (GNN) to model knowledge states based on highlighted content in documents.
+## Overview
 
-The pipeline processes documents to extract text and highlights, clusters related concepts, and uses a GNN to predict whether a concept cluster is understood or not understood by a learner.
+The system processes PDF documents page by page to extract:
 
-### Core Components
+*   **Text Content & Layout:** Using PyMuPDF for initial text/word extraction and bounding boxes.
+*   **Layout Features:** Employing `microsoft/layoutlmv3-base` (via Hugging Face `transformers`) to understand document layout (though embeddings are not stored in the final JSON by default).
+*   **Native PDF Annotations:** Extracting standard annotations like highlights, underlines, comments, ink strokes, etc., directly from the PDF structure using PyMuPDF. Captures type, bounding box, associated text, color information (stroke/fill), and vertices (for ink).
+*   **CV-Detected Annotations:** For PDFs where annotations are not native (e.g., flattened or drawn highlights/ink), uses OpenCV (`cv2`) to visually detect regions based on color (e.g., yellow highlights, red ink). Stores bounding box, associated text, and detected color name.
+*   **Visual Elements:** Identifying figures and drawings using heuristics based on image info and vector graphics extracted by PyMuPDF.
+*   **Equations:** Identifying potential equation regions using layout and symbol heuristics.
+*   **VLM Analysis:** Using OpenAI's GPT-4o API (via `asyncio` for concurrency) to:
+    *   Generate descriptions for detected figures and drawings.
+    *   Transcribe detected equations (attempting LaTeX format).
+*   **Structured Output:** Saving all extracted information into a detailed JSON file per processed PDF.
+*   **Visualization:** Providing a script (`visualize_output.py`) to draw the extracted bounding boxes, labels, VLM descriptions, and annotations onto a copy of the original PDF for review.
 
-1. **Document Processing** (`doc_parsing/layoutlm/`)
-   - Extracts text, structure, and annotations from documents
-   - Processes highlights to determine "understood" vs "not understood" content
+## Features
 
-2. **Knowledge Modeling Pipeline** (`knowledge_pipeline.py`)
-   - Extracts text and highlight information
-   - Computes semantic embeddings using Sentence Transformers
-   - Clusters related concepts using hierarchical clustering
-   - Prepares input for the GNN
+*   Extracts text blocks with bounding boxes.
+*   Extracts native annotations (highlights, comments, ink, etc.) with metadata (color, vertices).
+*   Detects non-native highlights and ink strokes using OpenCV color detection.
+*   Merges fragmented CV-detected highlights and ink strokes for better continuity.
+*   Identifies potential figure, drawing, and equation regions.
+*   Uses GPT-4o for rich descriptions of visual elements and transcription of equations.
+*   Filters VLM refusal messages (e.g., "I cannot...").
+*   Outputs structured JSON data.
+*   Provides a visualization script to overlay extracted data onto the PDF.
+*   Leverages GPU for LayoutLM inference if PyTorch with CUDA is correctly installed.
 
-3. **Graph Neural Network** (`gnn/`)
-   - Models relationships between concept clusters
-   - Predicts knowledge state (understood/not understood) for concepts
+## Setup
 
-## Getting Started
+1.  **Clone the Repository:**
+    ```bash
+    git clone <your-repo-url>
+    cd <your-repo-directory>/doc_parsing/layoutlm 
+    ```
+2.  **Create Virtual Environment:** (Recommended)
+    ```bash
+    python -m venv .venv 
+    ```
+3.  **Activate Environment:**
+    *   Windows (PowerShell): `.\.venv\Scripts\Activate.ps1`
+    *   macOS/Linux: `source .venv/bin/activate`
+4.  **Install Dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+    *   **GPU Support (Recommended):** For significantly faster processing. Follow instructions on the [official PyTorch website](https://pytorch.org/get-started/locally/) to install the correct version matching your CUDA toolkit (e.g., `pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121`).
 
-### Prerequisites
+5.  **Set up OpenAI API Key:**
+    *   Create a file named `.env` in the `doc_parsing/layoutlm/` directory.
+    *   Add your OpenAI API key to the `.env` file:
+        ```dotenv
+        OPENAI_API_KEY="your_actual_openai_api_key_here"
+        ```
+    *   **Important:** Ensure `.env` is listed in your `.gitignore` file to avoid committing your key.
 
-Install the required dependencies:
+## Usage
 
-```bash
-pip install -r requirements.txt
-```
+Run scripts from the **workspace root directory** (`How2AI/how2ai-CKGY/` or equivalent) using the module flag (`-m`) to ensure relative imports work correctly.
 
-### Running the Pipeline
+1.  **Processing a PDF:**
+    ```bash
+    python -m doc_parsing.layoutlm.document_processor --pdf_path path/to/your/input_document.pdf
+    ```
+    *   Replace `path/to/your/input_document.pdf` with the actual path to the PDF you want to process (e.g., `doc_parsing/layoutlm/PDF_data/NLP/your_paper.pdf`).
+    *   This will generate a `_processed.json` file in the `doc_parsing/layoutlm/output/` directory containing the extracted data.
 
-To run the complete pipeline:
+2.  **Visualizing the Output:**
+    ```bash
+    python -m doc_parsing.layoutlm.visualize_output --pdf_path path/to/your/original.pdf --json_path path/to/your/processed.json --output_path path/to/your/visualized.pdf
+    ```
+    *   Replace the paths accordingly (use the original PDF and the generated JSON).
+    *   The output visualized PDF will be saved to the specified path (defaults to the same directory as the original PDF with `_visualized` appended).
+    *   Use the `--draw_text` flag to also visualize detected text block boundaries (can be very cluttered).
 
-```bash
-python pipeline_runner.py --input /path/to/document.pdf
-```
+## Configuration & Tuning
 
-#### Command Line Arguments
+*   **`config.py`:** Modify VLM prompts (`VLM_PROMPT_...`), model names, JSON indentation, and CV detection parameters.
+*   **CV Tuning:** The accuracy of CV-based highlight and ink detection heavily depends on the specific colors and rendering in your PDFs. You may need to:
+    *   Adjust the **HSV ranges** in `config.py` (`CV_HIGHLIGHT_HSV_RANGES`) to match the exact shades of color used.
+    *   Tune **morphology parameters** (`HIGHLIGHT_...`, `INK_...`) and **merging parameters** (`MAX_HORIZONTAL_GAP_RATIO`, `MIN_VERTICAL_OVERLAP_RATIO`) in `cv_utils.py` to optimize detection and continuity.
 
-- `--input`: Path to input document (PDF or JSON)
-- `--pipeline-output`: Path to save pipeline output (default: pipeline_output.json)
-- `--clusters`: Number of concept clusters (default: 10)
-- `--similarity`: Similarity threshold for edges (default: 0.7)
-- `--embeddings`: Embedding model to use (default: all-MiniLM-L6-v2)
-- `--epochs`: Number of training epochs (default: 50)
-- `--model-output`: Path to save the trained model (default: gnn_model.pth)
-- `--skip-training`: Skip GNN training and only run pipeline
-- `--predictions-output`: Path to save predictions (default: predictions.json)
+## Previous Approaches (Briefly)
 
-### Pipeline Steps
+Earlier iterations of related projects may have explored Graph Neural Networks (GNNs) for document understanding, but this specific pipeline focuses on the combination of LayoutLM, rule-based extraction, CV, and VLM analysis for annotated PDFs.
 
-1. **Document Processing**
-   - Process the PDF document to extract text blocks and highlights
-   - Highlight information determines what content is "understood" vs "not understood"
+## Contributing
 
-2. **Concept Clustering**
-   - Create semantic embeddings for each text block
-   - Cluster text blocks based on semantic similarity
-   - Determine concept cluster status based on contained highlights
+(Add contribution guidelines if applicable)
 
-3. **GNN Preparation**
-   - Transform concept clusters into graph nodes
-   - Create edges between related concepts
-   - Define node features and labels
+## License
 
-4. **GNN Training and Evaluation**
-   - Train the GNN to predict understanding state of concept clusters
-   - Evaluate model performance
-   - Generate predictions for interpretation
-
-## Output Files
-
-- `pipeline_output.json`: Contains text items, concept clusters, and GNN data structure
-- `gnn_model.pth`: Trained GNN model
-- `predictions.json`: Model predictions with cluster information
-
-## Understanding the Results
-
-The pipeline provides interpretable concept clusters with:
-- Representative text for each cluster
-- Understanding status based on highlights
-- GNN predictions for each concept cluster
-- Related text items within each cluster
-
----
-
-## Example Usage
-
-Process a document with highlights:
-
-```bash
-python pipeline_runner.py --input doc_parsing/layoutlm/Input_files/sample_doc.pdf --clusters 15
-```
-
-Process a previously parsed document:
-
-```bash
-python pipeline_runner.py --input doc_parsing/layoutlm/output/processed_document.json
-```
+(Add license information if applicable)

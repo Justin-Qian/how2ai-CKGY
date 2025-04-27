@@ -3,7 +3,7 @@ from openai import OpenAI
 import os
 
 ## Set OpenAI API Key
-os.environ["OPENAI_API_KEY"] = "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"
+OpenAI.api_key = os.getenv("OPENAI_API_KEY")
 
 ## Read text from a file
 def read_text_from_file(file_path):

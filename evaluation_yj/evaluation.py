@@ -11,8 +11,8 @@ from metrics import calculate_bleu, calculate_rouge, evaluate_text
 
 if __name__ == "__main__":
     # Paths to the processed text files
-    reference_text_path = "processed_data/reference_text.txt"
-    summary_text_path = "processed_data/summary.txt"
+    reference_text_path = "evaluation_yj/processed_data/reference_text.txt"
+    summary_text_path = "evaluation_yj/processed_data/summary.txt"
 
     # Read the reference and summary texts
     reference_text = read_text_from_file(reference_text_path)
@@ -35,5 +35,5 @@ if __name__ == "__main__":
         "rouge-2": rouge['rouge-2']['f'],
         "rouge-l": rouge['rouge-l']['f'],
     }
-    with open("processed_data/evaluation_results.json", "w", encoding="utf-8") as json_file:
+    with open("evaluation_yj/processed_data/evaluation_results.json", "w", encoding="utf-8") as json_file:
         json.dump(results, json_file, ensure_ascii=False, indent=4)

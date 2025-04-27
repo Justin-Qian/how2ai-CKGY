@@ -1,5 +1,5 @@
 from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
-from rouge import Rouge
+from rouge_score import rouge_scorer
 import numpy as np
 
 def calculate_bleu(reference, candidate):
@@ -35,10 +35,14 @@ def calculate_rouge(reference, candidate):
     Returns:
         dict: Dictionary with ROUGE-1, ROUGE-2 and ROUGE-L scores
     """
-    rouge = Rouge()
     try:
-        scores = rouge.get_scores(candidate, reference)
-        return scores[0]
+        scorer = rouge_scorer.RougeScorer(['rouge1', 'rouge2', 'rougeL'], use_stemmer=True)
+        scores = scorer.score(reference, candidate)
+        return {
+            "rouge-1": {"f": scores['rouge1'].fmeasure},
+            "rouge-2": {"f": scores['rouge2'].fmeasure},
+            "rouge-l": {"f": scores['rougeL'].fmeasure}
+        }
     except:
         return {"rouge-1": {"f": 0.0}, "rouge-2": {"f": 0.0}, "rouge-l": {"f": 0.0}}
 

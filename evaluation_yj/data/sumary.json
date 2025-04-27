@@ -1,0 +1,911 @@
+    {
+        "pages": [
+        {
+            "page_number": 10,
+            "dimensions": [
+                612.0,
+                767.3587036132812
+            ],
+            "text_blocks": [
+                {
+                    "text": "Summary",
+                    "bbox": {
+                        "x0": 277.98590087890625,
+                        "y0": 69.93016052246094,
+                        "x1": 347.2419738769531,
+                        "y1": 97.64644622802734
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "Introduction",
+                    "bbox": {
+                        "x0": 65.72300720214844,
+                        "y0": 92.10637664794922,
+                        "x1": 117.33351135253906,
+                        "y1": 108.73614501953125
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "Scaling the number of parameters in a model, the amount of training data, or the computational budget has •",
+                    "bbox": {
+                        "x0": 65.72300720214844,
+                        "y0": 125.67784118652344,
+                        "x1": 529.5693359375,
+                        "y1": 142.3076171875
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "proven to be an effective yet simple technique for improving model performance.",
+                    "bbox": {
+                        "x0": 76.11661529541016,
+                        "y0": 142.4635772705078,
+                        "x1": 417.44573974609375,
+                        "y1": 159.09335327148438
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "The feedforward (FFW) layers in standard transformer architectures, responsible for storing \"factual •",
+                    "bbox": {
+                        "x0": 65.72300720214844,
+                        "y0": 159.24929809570312,
+                        "x1": 510.51275634765625,
+                        "y1": 175.8790740966797
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "knowledge\", incur a linear increase in computational costs and activation memory as the hidden layer width",
+                    "bbox": {
+                        "x0": 76.11661529541016,
+                        "y0": 176.03501892089844,
+                        "x1": 532.3128662109375,
+                        "y1": 192.664794921875
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "grows.",
+                    "bbox": {
+                        "x0": 76.11661529541016,
+                        "y0": 192.82078552246094,
+                        "x1": 105.23429870605469,
+                        "y1": 209.4505615234375
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "Mixture of Experts (MoE) has become a good alternative for decoupling the computational cost and the •",
+                    "bbox": {
+                        "x0": 65.72300720214844,
+                        "y0": 209.60646057128906,
+                        "x1": 520.0675048828125,
+                        "y1": 226.23623657226562
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "parameter count.",
+                    "bbox": {
+                        "x0": 76.11661529541016,
+                        "y0": 226.3922119140625,
+                        "x1": 149.70333862304688,
+                        "y1": 243.02198791503906
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "Recent works have found that using more experts (high granularity) increases performance. When the •",
+                    "bbox": {
+                        "x0": 65.72300720214844,
+                        "y0": 243.17799377441406,
+                        "x1": 510.77618408203125,
+                        "y1": 259.8077697753906
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "number of training tokens is compute-optimal, MoEs consistently outperform dense models in terms of",
+                    "bbox": {
+                        "x0": 76.11661529541016,
+                        "y0": 259.9636535644531,
+                        "x1": 515.9345703125,
+                        "y1": 276.5934143066406
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "FLOP efficiency.",
+                    "bbox": {
+                        "x0": 76.11661529541016,
+                        "y0": 276.7494201660156,
+                        "x1": 150.78378295898438,
+                        "y1": 293.3791809082031
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "Another reason to have many experts is lifelong learning. It has been proved that by simply adding new •",
+                    "bbox": {
+                        "x0": 65.72300720214844,
+                        "y0": 293.5351867675781,
+                        "x1": 513.7150268554688,
+                        "y1": 310.1649475097656
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "experts and regularizing them properly, MoE models can adapt to continuous data streams.",
+                    "bbox": {
+                        "x0": 76.11661529541016,
+                        "y0": 310.3208923339844,
+                        "x1": 467.16571044921875,
+                        "y1": 326.9506530761719
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "Proposed Method",
+                    "bbox": {
+                        "x0": 65.72300720214844,
+                        "y0": 360.6780700683594,
+                        "x1": 142.56295776367188,
+                        "y1": 377.3078308105469
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "Introduces the Parameter Efficient Expert Retrieval (PEER) layer, which is a MoE architecture using product",
+                    "bbox": {
+                        "x0": 65.72300720214844,
+                        "y0": 394.2496032714844,
+                        "x1": 534.9534301757812,
+                        "y1": 410.8793640136719
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "keys in the router and single-neuron MLPs as experts. A PEER layer consists of three components: a pool of",
+                    "bbox": {
+                        "x0": 65.72300720214844,
+                        "y0": 411.0352783203125,
+                        "x1": 536.8397827148438,
+                        "y1": 427.6650390625
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "N experts E, a corresponding set of N product keys K, and a query network q. Here is how it works:",
+                    "bbox": {
+                        "x0": 65.72300720214844,
+                        "y0": 427.821044921875,
+                        "x1": 488.8966369628906,
+                        "y1": 444.4508056640625
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "Given a query x, retrieve a subset of k experts whose corresponding product keys have the highest inner •",
+                    "bbox": {
+                        "x0": 65.72300720214844,
+                        "y0": 461.3924865722656,
+                        "x1": 518.45556640625,
+                        "y1": 478.0222473144531
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "products with the query q(x).",
+                    "bbox": {
+                        "x0": 76.11661529541016,
+                        "y0": 478.17822265625,
+                        "x1": 196.84149169921875,
+                        "y1": 494.8079833984375
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "Apply an activation function like sigmoid or softmax to obtain the router scores for these retrieved top k •",
+                    "bbox": {
+                        "x0": 65.72300720214844,
+                        "y0": 494.9639892578125,
+                        "x1": 518.8218994140625,
+                        "y1": 511.59375
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "experts.",
+                    "bbox": {
+                        "x0": 76.11661529541016,
+                        "y0": 511.7496643066406,
+                        "x1": 111.19815063476562,
+                        "y1": 528.37939453125
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "Compute the output by linearly combining the expert outputs weighted by the router scores. •",
+                    "bbox": {
+                        "x0": 65.72300720214844,
+                        "y0": 528.535400390625,
+                        "x1": 464.985595703125,
+                        "y1": 545.1651611328125
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "Product-Key Retrieval",
+                    "bbox": {
+                        "x0": 65.72300720214844,
+                        "y0": 562.1068115234375,
+                        "x1": 164.43161010742188,
+                        "y1": 578.736572265625
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "If you have a large number of experts, each with a dimensionality d, then computing the top k indices can be •",
+                    "bbox": {
+                        "x0": 65.72300720214844,
+                        "y0": 595.6784057617188,
+                        "x1": 532.2140502929688,
+                        "y1": 612.3081665039062
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "very expensive (O(Nd), N being >= 1e6 in this case).",
+                    "bbox": {
+                        "x0": 76.11661529541016,
+                        "y0": 612.4640502929688,
+                        "x1": 297.4521179199219,
+                        "y1": 629.0938110351562
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "The authors apply the product key retrieval technique used in the \"Large Memory Layers with Product Keys\" •",
+                    "bbox": {
+                        "x0": 65.72300720214844,
+                        "y0": 629.2498168945312,
+                        "x1": 536.0966186523438,
+                        "y1": 645.8795776367188
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "paper. Instead of using N independent d-dimensional experts as keys, use two independent subsets, each",
+                    "bbox": {
+                        "x0": 76.11661529541016,
+                        "y0": 646.0355834960938,
+                        "x1": 523.6098022460938,
+                        "y1": 662.6653442382812
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "with dimensionality d/2, to form the keys.",
+                    "bbox": {
+                        "x0": 76.11661529541016,
+                        "y0": 662.8212890625,
+                        "x1": 254.92303466796875,
+                        "y1": 679.4510498046875
+                    },
+                    "layoutlm_embedding": null
+                }
+            ],
+            "annotations": [],
+            "visual_elements": [
+                {
+                    "type": "figure",
+                    "bbox": {
+                        "x0": 0.0,
+                        "y0": -0.64129638671875,
+                        "x1": 537.0,
+                        "y1": 537.3587036132812
+                    },
+                    "vlm_description": "The figure presents a summary and a proposed method from a research paper.\n\n### Summary\n- **Introduction**: \n  - Scaling model parameters, training data, or computational budget effectively improves model performance.\n  - Feedforward (FFW) layers in transformers increase computational costs and memory as layer width grows.\n  - Mixture of Experts (MoE) is an alternative for decoupling computational cost from parameter count.\n  - More experts (high granularity) improve performance and MoEs outperform dense models in FLOP efficiency.\n  - MoEs support lifelong learning by adding and regularizing experts to adapt to data streams.\n\n### Proposed Method\n- **Parameter Efficient Expert Retrieval (PEER)**:\n  - A MoE architecture using product keys in the router and single-neuron MLPs as experts.\n  - PEER layer consists of:\n    1. Pool of N experts E\n    2. Set of N product keys K\n    3. Query network q\n- **Process**:\n  - Retrieve subset of k experts with highest inner product scores with query q(x).\n  - Use activation functions like sigmoid or softmax for routing scores.\n  - Experts perform task based on the route determined by scores.",
+                    "vlm_structured_data": null,
+                    "associated_text_indices": null
+                },
+                {
+                    "type": "figure",
+                    "bbox": {
+                        "x0": 0.0,
+                        "y0": 1073.358642578125,
+                        "x1": 537.0,
+                        "y1": 1610.358642578125
+                    },
+                    "vlm_description": null,
+                    "vlm_structured_data": null,
+                    "associated_text_indices": null
+                },
+                {
+                    "type": "figure",
+                    "bbox": {
+                        "x0": 536.0,
+                        "y0": -0.64129638671875,
+                        "x1": 1074.0,
+                        "y1": 537.3587036132812
+                    },
+                    "vlm_description": "It appears that the image is mostly blank or extremely minimal with little visible content. If there is more detail or if the image isn't loading correctly, you might want to try uploading again or describing what you see.",
+                    "vlm_structured_data": null,
+                    "associated_text_indices": null
+                },
+                {
+                    "type": "figure",
+                    "bbox": {
+                        "x0": 536.0,
+                        "y0": 1073.358642578125,
+                        "x1": 1074.0,
+                        "y1": 1610.358642578125
+                    },
+                    "vlm_description": null,
+                    "vlm_structured_data": null,
+                    "associated_text_indices": null
+                },
+                {
+                    "type": "figure",
+                    "bbox": {
+                        "x0": 1073.0,
+                        "y0": -0.64129638671875,
+                        "x1": 1611.0,
+                        "y1": 537.3587036132812
+                    },
+                    "vlm_description": null,
+                    "vlm_structured_data": null,
+                    "associated_text_indices": null
+                },
+                {
+                    "type": "figure",
+                    "bbox": {
+                        "x0": 1073.0,
+                        "y0": 1073.358642578125,
+                        "x1": 1611.0,
+                        "y1": 1610.358642578125
+                    },
+                    "vlm_description": null,
+                    "vlm_structured_data": null,
+                    "associated_text_indices": null
+                }
+            ],
+            "image_path": null
+        },
+        {
+            "page_number": 11,
+            "dimensions": [
+                612.0,
+                767.3587036132812
+            ],
+            "text_blocks": [
+                {
+                    "text": "Similarly, split the query vector q(x) into two sub-queries and then apply the top-k operation to the inner •",
+                    "bbox": {
+                        "x0": 70.57090759277344,
+                        "y0": 77.85607147216797,
+                        "x1": 522.470947265625,
+                        "y1": 94.48583984375
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "products between the sub-queries and sub-keys.",
+                    "bbox": {
+                        "x0": 80.96451568603516,
+                        "y0": 94.64179992675781,
+                        "x1": 287.26983642578125,
+                        "y1": 111.27156829833984
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "This Cartesian product structure of K allows us to find the top k experts efficiently, reducing the complexity •",
+                    "bbox": {
+                        "x0": 70.57090759277344,
+                        "y0": 111.42753601074219,
+                        "x1": 540.193603515625,
+                        "y1": 128.05731201171875
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "from O(Nd) to O((√N + k^2) * d)",
+                    "bbox": {
+                        "x0": 80.96451568603516,
+                        "y0": 128.21327209472656,
+                        "x1": 221.76930236816406,
+                        "y1": 144.84304809570312
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "If you are thinking why this makes sense, consider doing napkin math by taking an example. Say,",
+                    "bbox": {
+                        "x0": 70.57090759277344,
+                        "y0": 161.7847137451172,
+                        "x1": 485.1064147949219,
+                        "y1": 178.41448974609375
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "N=10000(which are your keys/experts K), d = 512 (dimensionality of query vector, and each key), and you",
+                    "bbox": {
+                        "x0": 70.57090759277344,
+                        "y0": 178.5704803466797,
+                        "x1": 536.02685546875,
+                        "y1": 195.20025634765625
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "are searching for the top 10 values from the inner product of the query, and the keys.",
+                    "bbox": {
+                        "x0": 70.57090759277344,
+                        "y0": 195.3561553955078,
+                        "x1": 431.5902099609375,
+                        "y1": 211.98593139648438
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "Parameter Efficient Experts and Multi-Head Retrieval",
+                    "bbox": {
+                        "x0": 70.57090759277344,
+                        "y0": 413.57073974609375,
+                        "x1": 306.6990966796875,
+                        "y1": 430.20050048828125
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "In a PEER layer, every expert e is a hidden layer with a single neuron as shown below in equation 6. •",
+                    "bbox": {
+                        "x0": 70.57090759277344,
+                        "y0": 447.1421813964844,
+                        "x1": 507.4947509765625,
+                        "y1": 463.7719421386719
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "This is different from the existing MoEs as the hidden layer is often set to the original size of the FFN layer. •",
+                    "bbox": {
+                        "x0": 70.57090759277344,
+                        "y0": 463.92791748046875,
+                        "x1": 539.2721557617188,
+                        "y1": 480.55767822265625
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "To adjust the reduced expressiveness in the PEER layer, the authors use multi-head retrieval, similar to the •",
+                    "bbox": {
+                        "x0": 70.57090759277344,
+                        "y0": 480.71368408203125,
+                        "x1": 535.2700805664062,
+                        "y1": 497.34344482421875
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "multi-head attention mechanism in transformers and the multi-head memory in PKMs.",
+                    "bbox": {
+                        "x0": 80.96451568603516,
+                        "y0": 497.4993591308594,
+                        "x1": 448.017333984375,
+                        "y1": 514.1290893554688
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "h independent query networks instead of one, each computes its query and retrieves a separate set of k •",
+                    "bbox": {
+                        "x0": 70.57090759277344,
+                        "y0": 514.2850952148438,
+                        "x1": 520.6036987304688,
+                        "y1": 530.9148559570312
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "experts. However, different heads share the same pool of experts with the same set of product keys. The",
+                    "bbox": {
+                        "x0": 80.96451568603516,
+                        "y0": 531.0709228515625,
+                        "x1": 525.2974243164062,
+                        "y1": 547.70068359375
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "outputs of these h heads are simply summed up. If one expert is retrieved (k = 1) per head, using a PEER",
+                    "bbox": {
+                        "x0": 80.96451568603516,
+                        "y0": 547.8565063476562,
+                        "x1": 522.326416015625,
+                        "y1": 564.4862670898438
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "layer with h heads is the same as using one expert with h hidden neurons.",
+                    "bbox": {
+                        "x0": 80.96451568603516,
+                        "y0": 564.642333984375,
+                        "x1": 390.33697509765625,
+                        "y1": 581.2720947265625
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "The million-dollar question: Why a large number of small experts?",
+                    "bbox": {
+                        "x0": 70.57090759277344,
+                        "y0": 614.99951171875,
+                        "x1": 352.0406799316406,
+                        "y1": 631.6292724609375
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "Look at the scaling law for MoE in equation 9 in the above figure where L is the final test loss, a, b, g, γ, α, β",
+                    "bbox": {
+                        "x0": 70.57090759277344,
+                        "y0": 631.7852783203125,
+                        "x1": 527.7830810546875,
+                        "y1": 648.4150390625
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "are constants, D is the total number of training tokens, and the granularity G is the number of active experts.",
+                    "bbox": {
+                        "x0": 70.57090759277344,
+                        "y0": 648.5709838867188,
+                        "x1": 533.1036376953125,
+                        "y1": 665.2007446289062
+                    },
+                    "layoutlm_embedding": null
+                }
+            ],
+            "annotations": [],
+            "visual_elements": [
+                {
+                    "type": "figure",
+                    "bbox": {
+                        "x0": 0.0,
+                        "y0": -0.64129638671875,
+                        "x1": 537.0,
+                        "y1": 537.3587036132812
+                    },
+                    "vlm_description": "The figure presents mathematical notations and descriptions related to a research topic on \"Parameter Efficient Experts and Multi-Head Retrieval.\"\n\n1. **Equations:**\n   - Equation (6) defines `e_i(x)`, involving a sigma function and vectors.\n   - Equation (7) defines `f(x)` as a summation involving functions `f^i(x)` and `g_j(x)e_j(x)`.\n   - Equation (8) reformulates `f(x)` as another summation with vectors and a final product involving a matrix `W`.\n   - Equation (9) presents a function `L(P, D, G)` with parameters `g`, `a`, `b`, and terms involving `G_γ`, `P_α`, `D_β`.\n\n2. **Text Descriptions:**\n   - Details on query vectors `q(x)` and splitting them for computational efficiency.\n   - Context on reducing computational complexity by employing a Cartesian product structure.\n   - An example scenario with specified parameters for better understanding.\n   - Discussion on differences between PEER layers and existing Mixtures of Experts (MoEs).\n\n3. **Additional Points:**\n   - Discusses the use of multi-head attention and memory mechanisms in PEER layers.\n   - Highlights the independence and function of expert networks within this framework.\n\nThe equations and descriptions work together to explain the framework and mechanisms used in optimizing computational performance in expert models.",
+                    "vlm_structured_data": null,
+                    "associated_text_indices": null
+                },
+                {
+                    "type": "figure",
+                    "bbox": {
+                        "x0": 0.0,
+                        "y0": 1073.358642578125,
+                        "x1": 537.0,
+                        "y1": 1610.358642578125
+                    },
+                    "vlm_description": null,
+                    "vlm_structured_data": null,
+                    "associated_text_indices": null
+                },
+                {
+                    "type": "figure",
+                    "bbox": {
+                        "x0": 536.0,
+                        "y0": -0.64129638671875,
+                        "x1": 1074.0,
+                        "y1": 537.3587036132812
+                    },
+                    "vlm_description": "The figure from the research paper appears to be mostly white space with some very small elements. There are two tiny areas, one at the upper left and another at the bottom left, both containing small red details. It lacks any substantial graphical information or context based on what is visible in this snippet.",
+                    "vlm_structured_data": null,
+                    "associated_text_indices": null
+                },
+                {
+                    "type": "figure",
+                    "bbox": {
+                        "x0": 536.0,
+                        "y0": 1073.358642578125,
+                        "x1": 1074.0,
+                        "y1": 1610.358642578125
+                    },
+                    "vlm_description": null,
+                    "vlm_structured_data": null,
+                    "associated_text_indices": null
+                },
+                {
+                    "type": "figure",
+                    "bbox": {
+                        "x0": 1073.0,
+                        "y0": -0.64129638671875,
+                        "x1": 1611.0,
+                        "y1": 537.3587036132812
+                    },
+                    "vlm_description": null,
+                    "vlm_structured_data": null,
+                    "associated_text_indices": null
+                },
+                {
+                    "type": "figure",
+                    "bbox": {
+                        "x0": 1073.0,
+                        "y0": 1073.358642578125,
+                        "x1": 1611.0,
+                        "y1": 1610.358642578125
+                    },
+                    "vlm_description": null,
+                    "vlm_structured_data": null,
+                    "associated_text_indices": null
+                },
+                {
+                    "type": "figure",
+                    "bbox": {
+                        "x0": 99.6977767944336,
+                        "y0": 229.2005157470703,
+                        "x1": 503.6316833496094,
+                        "y1": 375.53131103515625
+                    },
+                    "vlm_description": "The figure presents four equations from a research paper:\n\n1. Equation (6) defines \\( e_i(x) \\) as a function involving the sigmoid function \\(\\sigma\\), a weight vector \\( u_i^T \\), an input \\( x \\), and a vector \\( v_i \\).\n\n2. Equation (7) describes \\( f(x) \\) as the sum of individual components \\( f^i(x) \\) across a layer indexed by \\( i \\). Each component \\( f^i(x) \\) is further expanded into a sum over \\( j \\) involving weights \\( g_j(x) \\) and other components \\( e_j(x) \\).\n\n3. Equation (8) is another representation of \\( f(x) \\) as a summation over components \\( e^i(x) \\), which can also be expressed using \\( \\sigma(u_i^T x) v_i \\). This equates to a compact form \\( V\\sigma(W^T x) \\), indicating a matrix-vector operation.\n\n4. Equation (9) shows a loss function \\(\\mathcal{L}(P, D, G)\\) with a constant \\( c \\) and terms involving parameters \\( g, a, b, P, D, G \\) and their respective powers \\(\\gamma, \\alpha, \\beta\\).\n\nThese equations likely relate to a neural network model, with emphasis on component interactions and a custom loss function.",
+                    "vlm_structured_data": null,
+                    "associated_text_indices": null
+                }
+            ],
+            "image_path": null
+        },
+        {
+            "page_number": 12,
+            "dimensions": [
+                612.0,
+                767.3587036132812
+            ],
+            "text_blocks": [
+                {
+                    "text": "G = P (active) / P (expert) where:",
+                    "bbox": {
+                        "x0": 69.55802154541016,
+                        "y0": 74.22307586669922,
+                        "x1": 212.85675048828125,
+                        "y1": 90.85284423828125
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "P = total number of parameters",
+                    "bbox": {
+                        "x0": 69.55802154541016,
+                        "y0": 91.00880432128906,
+                        "x1": 203.860595703125,
+                        "y1": 107.6385726928711
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "P(active) = number of active parameters per token",
+                    "bbox": {
+                        "x0": 69.55802154541016,
+                        "y0": 107.79454040527344,
+                        "x1": 284.5928955078125,
+                        "y1": 124.42430877685547
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "P (expert) = size of single expert",
+                    "bbox": {
+                        "x0": 69.55802154541016,
+                        "y0": 124.58027648925781,
+                        "x1": 209.2845001220703,
+                        "y1": 141.21005249023438
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "To improve model performance, we need to scale up P, D, and G. On the other hand, we need to limit P (active)",
+                    "bbox": {
+                        "x0": 69.55802154541016,
+                        "y0": 158.15171813964844,
+                        "x1": 533.7090454101562,
+                        "y1": 174.781494140625
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "because the computational and memory costs are primarily determined by the active parameters during",
+                    "bbox": {
+                        "x0": 69.55802154541016,
+                        "y0": 174.93748474121094,
+                        "x1": 509.62591552734375,
+                        "y1": 191.5672607421875
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "training and inference. Now,",
+                    "bbox": {
+                        "x0": 69.55802154541016,
+                        "y0": 191.72315979003906,
+                        "x1": 190.81192016601562,
+                        "y1": 208.35293579101562
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "N = P / P (expert) = P * G / P (active)",
+                    "bbox": {
+                        "x0": 69.55802154541016,
+                        "y0": 225.294677734375,
+                        "x1": 233.20376586914062,
+                        "y1": 241.92445373535156
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "This implies that we should decrease the size of each expert, and increase the number of experts N. Also:",
+                    "bbox": {
+                        "x0": 69.55802154541016,
+                        "y0": 258.8661193847656,
+                        "x1": 516.390625,
+                        "y1": 275.4958801269531
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "P(expert) = (2*d_model + 1) * d_expert",
+                    "bbox": {
+                        "x0": 69.55802154541016,
+                        "y0": 292.4375915527344,
+                        "x1": 237.64552307128906,
+                        "y1": 309.0673522949219
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "P(active) = (2*d_model +1) * d_active; where",
+                    "bbox": {
+                        "x0": 69.55802154541016,
+                        "y0": 309.2233581542969,
+                        "x1": 261.2935485839844,
+                        "y1": 325.8531188964844
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "d_model = hidden dimension of the transformer",
+                    "bbox": {
+                        "x0": 69.55802154541016,
+                        "y0": 326.00909423828125,
+                        "x1": 272.32379150390625,
+                        "y1": 342.63885498046875
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "d_expert = number of hidden neurons used in one expert",
+                    "bbox": {
+                        "x0": 69.55802154541016,
+                        "y0": 342.7947692871094,
+                        "x1": 311.2457275390625,
+                        "y1": 359.4245300292969
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "d_active = total number of hidden neurons activated per token",
+                    "bbox": {
+                        "x0": 69.55802154541016,
+                        "y0": 359.5805358886719,
+                        "x1": 334.52325439453125,
+                        "y1": 376.2102966308594
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "For PEER, d_expert is 1, hence the granularity of PEER is always hk where h is the number of heads, and k is",
+                    "bbox": {
+                        "x0": 69.55802154541016,
+                        "y0": 393.1519775390625,
+                        "x1": 536.0418090820312,
+                        "y1": 409.78173828125
+                    },
+                    "layoutlm_embedding": null
+                },
+                {
+                    "text": "the number of experts retrieved per head",
+                    "bbox": {
+                        "x0": 69.55802154541016,
+                        "y0": 409.937744140625,
+                        "x1": 243.088134765625,
+                        "y1": 426.5675048828125
+                    },
+                    "layoutlm_embedding": null
+                }
+            ],
+            "annotations": [],
+            "visual_elements": [
+                {
+                    "type": "figure",
+                    "bbox": {
+                        "x0": 0.0,
+                        "y0": -0.64129638671875,
+                        "x1": 537.0,
+                        "y1": 537.3587036132812
+                    },
+                    "vlm_description": "The figure is a section from a research paper discussing model performance and optimization in the context of transformers. Here’s a breakdown:\n\n1. **Variables and Definitions:**\n   - \\( G = \\frac{P(\\text{active})}{P(\\text{expert})} \\)\n     - \\( P \\): Total number of parameters.\n     - \\( P(\\text{active}) \\): Number of active parameters per token.\n     - \\( P(\\text{expert}) \\): Size of a single expert.\n\n2. **Improving Performance:**\n   - To enhance model performance, the paper suggests scaling up \\( P \\), \\( D \\), and \\( G \\).\n   - Limiting \\( P(\\text{active}) \\) is crucial since it primarily determines computational and memory costs during training and inference.\n\n3. **Calculation and Strategy:**\n   - \\( N = \\frac{P}{P(\\text{expert})} = P \\frac{G}{P(\\text{active})} \\)\n   - This indicates a strategy to reduce expert size while increasing the number of experts (\\( N \\)).\n\n4. **Parameter Formulas:**\n   - \\( P(\\text{expert}) = (2 \\times d_{\\text{model}} + 1) \\times d_{\\text{expert}} \\)\n   - \\( P(\\text{active}) = (2 \\times d_{\\text{model}} + 1) \\times d_{\\text{active",
+                    "vlm_structured_data": null,
+                    "associated_text_indices": null
+                },
+                {
+                    "type": "figure",
+                    "bbox": {
+                        "x0": 0.0,
+                        "y0": 1073.358642578125,
+                        "x1": 537.0,
+                        "y1": 1610.358642578125
+                    },
+                    "vlm_description": null,
+                    "vlm_structured_data": null,
+                    "associated_text_indices": null
+                },
+                {
+                    "type": "figure",
+                    "bbox": {
+                        "x0": 536.0,
+                        "y0": -0.64129638671875,
+                        "x1": 1074.0,
+                        "y1": 537.3587036132812
+                    },
+                    "vlm_description": "It looks like the image is blank or transparent. There are no visible figures or content to describe. Could you provide more details or check the image?",
+                    "vlm_structured_data": null,
+                    "associated_text_indices": null
+                },
+                {
+                    "type": "figure",
+                    "bbox": {
+                        "x0": 536.0,
+                        "y0": 1073.358642578125,
+                        "x1": 1074.0,
+                        "y1": 1610.358642578125
+                    },
+                    "vlm_description": null,
+                    "vlm_structured_data": null,
+                    "associated_text_indices": null
+                },
+                {
+                    "type": "figure",
+                    "bbox": {
+                        "x0": 1073.0,
+                        "y0": -0.64129638671875,
+                        "x1": 1611.0,
+                        "y1": 537.3587036132812
+                    },
+                    "vlm_description": null,
+                    "vlm_structured_data": null,
+                    "associated_text_indices": null
+                },
+                {
+                    "type": "figure",
+                    "bbox": {
+                        "x0": 1073.0,
+                        "y0": 1073.358642578125,
+                        "x1": 1611.0,
+                        "y1": 1610.358642578125
+                    },
+                    "vlm_description": null,
+                    "vlm_structured_data": null,
+                    "associated_text_indices": null
+                }
+            ],
+            "image_path": null
+        }
+    ]
+}

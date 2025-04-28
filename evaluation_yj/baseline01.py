@@ -45,12 +45,12 @@ def save_summary_to_file(summary, output_path):
 
 if __name__ == "__main__":
     # Example usage
-    extracted_text_path = "evaluation_yj/processed_data/extracted_text.txt"  # Path to the processed text file
+    extracted_text_path = "processed_data/extracted_text.txt"  # Path to the processed text file
     text = read_text_from_file(extracted_text_path)
     summary = generate_summary(text)
     print("Generated Summary:", summary)
 
     # Save the summary to a file
-    output_summary_path = "evaluation_yj/processed_data/summary.txt"
+    output_summary_path = "processed_data/summary.txt"
     save_summary_to_file(summary, output_summary_path)
     # You can now use `summary` for further metric calculations

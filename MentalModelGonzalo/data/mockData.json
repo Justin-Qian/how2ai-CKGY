@@ -1,0 +1,241 @@
+{
+    "document": {
+      "id": "doc_001",
+      "title": "Classical Conceptions of the Good",
+      "sections": ["sec_1", "sec_2"],
+      "character_start": 0,
+      "character_end": 762,
+      "summary": "Aristotle frames happiness (eudaimonia) as virtuous activity, while Plato roots moral knowledge in immutable Forms. Medieval scholastics fuse these strands into a Christian synthesis, and modern commentators debate whether virtue ethics can stand apart from deep metaphysical commitments."
+    },
+  
+    "sections": [
+      {
+        "id": "sec_1",
+        "heading": "Foundations",
+        "character_start": 0,
+        "character_end": 370,
+        "paragraphs": ["para_001", "para_002"]
+      },
+      {
+        "id": "sec_2",
+        "heading": "Synthesis and Debate",
+        "character_start": 371,
+        "character_end": 762,
+        "paragraphs": ["para_003", "para_004"]
+      }
+    ],
+  
+    "paragraphs": [
+      {
+        "id": "para_001",
+        "annotations": ["ann_001", "ann_002", "ann_003"],
+        "text": "In his Nicomachean Ethics, Aristotle explores the nature of happiness (eudaimonia) as the highest human good, arguing that a fulfilled life is one lived in accordance with virtue.",
+        "character_start": 0,
+        "character_end": 189
+      },
+      {
+        "id": "para_002",
+        "annotations": ["ann_004", "ann_005", "ann_006", "ann_007"],
+        "text": "Plato, conversely, situates knowledge of the Good within the realm of immutable Forms, suggesting that the sensible world merely participates in these perfect exemplars.",
+        "character_start": 190,
+        "character_end": 370
+      },
+      {
+        "id": "para_003",
+        "annotations": ["ann_008", "ann_009", "ann_010"],
+        "text": "Subsequent scholastic thinkers attempted to reconcile these classical positions, interweaving Aristotelian teleology with Platonic metaphysics to articulate a Christian synthesis.",
+        "character_start": 371,
+        "character_end": 561
+      },
+      {
+        "id": "para_004",
+        "annotations": ["ann_011", "ann_012", "ann_013", "ann_014", "ann_015"],
+        "text": "Modern commentators debate whether such integrative readings obscure important tensions, questioning if virtue ethics can truly be disentangled from metaphysical commitments.",
+        "character_start": 562,
+        "character_end": 762
+      }
+    ],
+  
+    "annotations": [
+      {
+        "id": "ann_001",
+        "type": "highlight",
+        "color": "yellow",
+        "referenced_text": "happiness (eudaimonia)",
+        "referenced_char_start": 60,
+        "referenced_char_end": 83,
+        "previous_text": "nature of ",
+        "posterior_text": " as the highest",
+        "paragraph_id": "para_001",
+        "annotated_text": "happiness (eudaimonia)"
+      },
+      {
+        "id": "ann_002",
+        "type": "comment",
+        "color": "blue",
+        "referenced_text": "fulfilled life",
+        "referenced_char_start": 118,
+        "referenced_char_end": 131,
+        "previous_text": "that a ",
+        "posterior_text": " is one lived",
+        "paragraph_id": "para_001",
+        "annotated_text": "Note: connects to telos concept"
+      },
+      {
+        "id": "ann_003",
+        "type": "symbol",
+        "color": "red",
+        "referenced_text": "virtue",
+        "referenced_char_start": 174,
+        "referenced_char_end": 179,
+        "previous_text": "with ",
+        "posterior_text": ".",
+        "paragraph_id": "para_001",
+        "annotated_text": "★"
+      },
+      {
+        "id": "ann_004",
+        "type": "highlight",
+        "color": "green",
+        "referenced_text": "immutable Forms",
+        "referenced_char_start": 229,
+        "referenced_char_end": 244,
+        "previous_text": "realm of ",
+        "posterior_text": ", suggesting",
+        "paragraph_id": "para_002",
+        "annotated_text": "immutable Forms"
+      },
+      {
+        "id": "ann_005",
+        "type": "comment",
+        "color": "purple",
+        "referenced_text": "sensible world",
+        "referenced_char_start": 257,
+        "referenced_char_end": 271,
+        "previous_text": "the ",
+        "posterior_text": " merely",
+        "paragraph_id": "para_002",
+        "annotated_text": "Phenomenal vs noumenal"
+      },
+      {
+        "id": "ann_006",
+        "type": "highlight",
+        "color": "yellow",
+        "referenced_text": "participates",
+        "referenced_char_start": 287,
+        "referenced_char_end": 298,
+        "previous_text": "merely ",
+        "posterior_text": " in these",
+        "paragraph_id": "para_002",
+        "annotated_text": "participates"
+      },
+      {
+        "id": "ann_007",
+        "type": "symbol",
+        "color": "orange",
+        "referenced_text": "Forms",
+        "referenced_char_start": 241,
+        "referenced_char_end": 246,
+        "previous_text": "immutable ",
+        "posterior_text": ", suggesting",
+        "paragraph_id": "para_002",
+        "annotated_text": "!"
+      },
+      {
+        "id": "ann_008",
+        "type": "highlight",
+        "color": "yellow",
+        "referenced_text": "scholastic thinkers",
+        "referenced_char_start": 382,
+        "referenced_char_end": 401,
+        "previous_text": "Subsequent ",
+        "posterior_text": " attempted",
+        "paragraph_id": "para_003",
+        "annotated_text": "scholastic thinkers"
+      },
+      {
+        "id": "ann_009",
+        "type": "comment",
+        "color": "blue",
+        "referenced_text": "Aristotelian teleology",
+        "referenced_char_start": 425,
+        "referenced_char_end": 447,
+        "previous_text": "interweaving ",
+        "posterior_text": " with Platonic",
+        "paragraph_id": "para_003",
+        "annotated_text": "Key linkage between ethics and purpose"
+      },
+      {
+        "id": "ann_010",
+        "type": "symbol",
+        "color": "red",
+        "referenced_text": "Platonic metaphysics",
+        "referenced_char_start": 451,
+        "referenced_char_end": 471,
+        "previous_text": "with ",
+        "posterior_text": " to articulate",
+        "paragraph_id": "para_003",
+        "annotated_text": "?"
+      },
+      {
+        "id": "ann_011",
+        "type": "highlight",
+        "color": "green",
+        "referenced_text": "Modern commentators",
+        "referenced_char_start": 570,
+        "referenced_char_end": 588,
+        "previous_text": "",
+        "posterior_text": " debate",
+        "paragraph_id": "para_004",
+        "annotated_text": "Modern commentators"
+      },
+      {
+        "id": "ann_012",
+        "type": "comment",
+        "color": "purple",
+        "referenced_text": "integrative readings",
+        "referenced_char_start": 604,
+        "referenced_char_end": 622,
+        "previous_text": "such ",
+        "posterior_text": " obscure",
+        "paragraph_id": "para_004",
+        "annotated_text": "Could imply synthesis bias"
+      },
+      {
+        "id": "ann_013",
+        "type": "symbol",
+        "color": "orange",
+        "referenced_text": "virtue ethics",
+        "referenced_char_start": 646,
+        "referenced_char_end": 658,
+        "previous_text": "if ",
+        "posterior_text": " can truly",
+        "paragraph_id": "para_004",
+        "annotated_text": "↑"
+      },
+      {
+        "id": "ann_014",
+        "type": "highlight",
+        "color": "yellow",
+        "referenced_text": "metaphysical commitments",
+        "referenced_char_start": 700,
+        "referenced_char_end": 723,
+        "previous_text": "from ",
+        "posterior_text": ".",
+        "paragraph_id": "para_004",
+        "annotated_text": "metaphysical commitments"
+      },
+      {
+        "id": "ann_015",
+        "type": "comment",
+        "color": "blue",
+        "referenced_text": "disentangled",
+        "referenced_char_start": 660,
+        "referenced_char_end": 671,
+        "previous_text": "be ",
+        "posterior_text": " from metaphysical",
+        "paragraph_id": "para_004",
+        "annotated_text": "Is this feasible?"
+      }
+    ]
+  }

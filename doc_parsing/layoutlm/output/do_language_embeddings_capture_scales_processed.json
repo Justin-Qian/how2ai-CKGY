@@ -2,7 +2,7 @@
     "metadata": {
         "filename": "do_language_embeddings_capture_scales.pdf",
         "total_pages": 8,
-        "processing_timestamp": "2025-04-20T10:14:36.771415"
+        "processing_timestamp": "2025-04-20T18:32:01.235974"
     },
     "pages": [
         {
@@ -861,7 +861,7 @@
                     "comment_info": null,
                     "color": null,
                     "vertices": null,
-                    "semantic_tag": null,
+                    "semantic_tag":     null,
                     "detected_color_name": "yellow"
                 },
                 {
@@ -1369,7 +1369,7 @@
                         "x1": 540.2011108398438,
                         "y1": 382.6763916015625
                     },
-                    "vlm_description": "The figure illustrates a machine learning model workflow for predicting quantities associated with tokens in a text input. \n\n1. **Input Tokens:** The sentence \"The dog is heavy\" is shown, with the word \"dog\" highlighted.\n   \n2. **Pre-trained Encoder:** The input tokens are processed through a frozen, pre-trained encoder, which suggests that this encoder is not updated during training.\n\n3. **Linear Probe:** Output from the encoder is passed to a linear probe, which is used for the final prediction task.\n\n4. **Distribution Graph:** There is a histogram labeled \"Distribution over Quantities\" showing two datasets: DoQ (gray bars) and NumBERT (orange bars), plotted against mass values on a logarithmic scale.\n\n5. **Loss Functions:** The prediction step involves using either dense cross-entropy (mcc) or squared error loss (rgr) for optimizing the model.\n\n6. **Visual Elements:** A snowflake icon indicates that the encoder is frozen, and there are lines and arrows indicating the flow of information through the model.",
+                    "vlm_description": "The figure illustrates a model architecture for predicting quantities using a pre-trained encoder. It shows a system for processing input tokens, specifically the sentence \"The dog is heavy.\" \n\n1. **Input Tokens:**\n   - The sentence is broken down into individual tokens: \"The,\" \"dog,\" \"is,\" and \"heavy.\" These are shown being fed into the encoder.\n\n2. **Pre-trained Encoder:**\n   - The sentence elements are processed through a \"Pre-trained encoder,\" which is described as a \"Frozen encoder,\" indicating that its parameters are not updated during this specific task.\n\n3. **Linear Probe:**\n   - The output from the encoder passes through a \"Linear probe,\" which is likely a simpler model layer used to predict quantities associated with the input tokens.\n\n4. **Prediction Types:**\n   - Two types of loss functions are mentioned:\n     - Dense cross-entropy for multi-class classification (indicated by \"mcc\").\n     - Squared error loss for regression tasks (indicated by \"rgr\").\n\n5. **Distribution Visualization:**\n   - The figure includes a graph showing the \"Distribution over Quantities,\" comparing \"DoQ\" (grey bars) with \"NumBERT\" (yellow bars) across different mass scales. This suggests the model's capability to handle a range of numerical values.\n\nOverall, the diagram shows an approach for using a pre-trained model to predict numerical quantities from text, highlighting aspects like input processing, prediction mechanisms, and evaluation methods.",
                     "vlm_structured_data": null,
                     "associated_text_indices": null
                 }
@@ -4170,7 +4170,7 @@
                         "x1": 297.8369445800781,
                         "y1": 227.1646728515625
                     },
-                    "vlm_description": "The figure is a histogram comparing three models: DoQ, BERT, and NumBERT across different length scales measured in meters. The x-axis represents the length in meters on a logarithmic scale, ranging from 0.01 to 1e9. The y-axis indicates the frequency or proportion of data within each length bin.\n\n- **DoQ (blue)**: Peaks at lengths around 1 to 10 meters and shows significant frequencies at 0.1 to 100 meters.\n- **BERT (gray)**: Peaks between 1 and 10 meters, with distributions notable up to 1000 meters.\n- **NumBERT (yellow)**: Shows a pronounced peak at 10 meters and distributions prominent between 1 and 100 meters.\n\nAll models show some activity across various length scales, but DoQ and BERT exhibit broader distributions at longer lengths compared to NumBERT.",
+                    "vlm_description": "The figure is a histogram comparing the distributions of \"DoQ,\" \"BERT,\" and \"NumBERT\" across various length scales measured in meters. The x-axis is labeled \"Length (m)\" and uses a logarithmic scale, ranging from 0.01 to 1e9 meters. The y-axis represents frequency, with values possibly between 0 and 0.25.\n\n- **DoQ** is represented in blue.\n- **BERT** is shown in gray.\n- **NumBERT** is depicted in yellow.\n\nNotable observations include:\n\n- **Small Lengths (0.01 to 1 meter):** All three distributions have their lowest presence, with slight increases as they approach 1 meter.\n- **Medium Lengths (10 to 1,000 meters):** \"NumBERT\" peaks substantially around 10 meters, while \"BERT\" has a significant presence at around 100 meters. \"DoQ\" also shows notable activity but less than the other two in some areas.\n- **Large Lengths (1,000 and beyond):** All distributions decrease, with \"BERT\" showing some presence up to larger lengths, while \"NumBERT\" and \"DoQ\" become sparse.\n\nThe data suggests varying effectiveness or focus of each model across different measurement scales.",
                     "vlm_structured_data": null,
                     "associated_text_indices": null
                 },
@@ -4182,7 +4182,7 @@
                         "x1": 544.2454833984375,
                         "y1": 227.1646728515625
                     },
-                    "vlm_description": "This figure is a histogram comparing the distributions of currency values (in dollars) handled by three different models: DoQ, BERT, and NumBERT. The x-axis represents currency values ranging from $0.01 to $1 billion, and the y-axis represents the relative frequency (or density) of these values.\n\n- **DoQ (in gray):** Shows a distribution with significant presence in lower ($1-$100) and higher ($1 billion) value ranges.\n- **BERT (in blue):** Displays a spread with a peak around $100 and a smoother distribution across other ranges.\n- **NumBERT (in yellow):** Has a similar distribution to BERT but with slightly different peaks, showing variations in handling currency values.\n\nThe chart illustrates how each model processes or predicts currency values across different scales.",
+                    "vlm_description": "The figure is a histogram comparing three models: DoQ, BERT, and NumBERT, in terms of their performance on a task related to currency amounts (labeled as \"bill\"). The x-axis represents the currency in logarithmic scale ranging from $0.01 to $1 billion (1e9), while the y-axis represents some kind of normalized frequency or proportion up to 0.3.\n\n- The bars are grouped by each currency range, with each group containing colored bars for DoQ (blue), BERT (gray), and NumBERT (yellow).\n- The distribution appears to be skewed towards lower currency values, with larger values having less representation.\n- Notably, in the currency ranges between $1 and $1k, the models show significant activity, but variations exist in their respective proportions.\n- For larger currency values (up to $1 billion), the models show varied performance, with some differences in their distributions.\n\nThis visualization helps in comparing how each model performs across different currency magnitudes.",
                     "vlm_structured_data": null,
                     "associated_text_indices": null
                 }
@@ -5639,7 +5639,7 @@
                         "x1": 281.2059020996094,
                         "y1": 452.0751953125
                     },
-                    "vlm_description": "The drawing is of a mathematical formula, likely representing a distance metric or cost calculation used in optimization or probability theory. The formula is:\n\n\\[ D(p_1, p_2) = \\inf_\\pi \\int_\\Omega \\int_\\Omega d(x, y) \\, d\\pi(x, y) \\]\n\n- \\( D(p_1, p_2) \\): Represents a distance or divergence between two distributions \\( p_1 \\) and \\( p_2 \\).\n- \\( \\inf_\\pi \\): The infimum is taken over all possible measures \\(\\pi\\).\n- \\(\\int_\\Omega \\int_\\Omega\\): Double integral over the domain \\(\\Omega\\).\n- \\(d(x, y)\\): A distance or cost function between points \\(x\\) and \\(y\\).\n- \\(d\\pi(x, y)\\): Measure related to the joint distribution of \\(x\\) and \\(y\\).\n\nThe expression is surrounded by a highlighted yellow box.",
+                    "vlm_description": "The drawing is an equation related to the optimal transport problem. It shows a mathematical expression for a transportation distance or metric:\n\n\\[ D(p_1, p_2) = \\inf_{\\pi} \\int_{\\Omega} \\int_{\\Omega} d(x, y) d\\pi(x, y) \\]\n\nHere, \\(D(p_1, p_2)\\) represents the distance between two probability distributions \\(p_1\\) and \\(p_2\\). The equation involves an infimum (inf), which is the greatest lower bound. \\(\\Omega\\) represents the space over which integration is performed. \\(d(x, y)\\) is a distance function, and \\(\\pi(x, y)\\) is a joint distribution coupling \\(p_1\\) and \\(p_2\\). The expression is set inside a rectangular frame with a yellow highlight.",
                     "vlm_structured_data": null,
                     "associated_text_indices": null
                 }
@@ -5653,7 +5653,7 @@
                         "x1": 170.41455078125,
                         "y1": 443.0052795410156
                     },
-                    "vlm_transcription": "The transcribed equation is:\n\n\\[ D(p_1, p_2) = \\inf_{\\pi} \\]",
+                    "vlm_transcription": "\\[ D(p_1, p_2) = \\inf_{\\pi} \\]",
                     "detection_source": "layout_symbol_heuristic_v3"
                 },
                 {
@@ -5664,7 +5664,7 @@
                         "x1": 273.8544616699219,
                         "y1": 437.03076171875
                     },
-                    "vlm_transcription": "The transcribed equation is:\n\n\\[ d(x, y) \\, d\\pi(x, y) \\]",
+                    "vlm_transcription": "The transcribed equation is: \\( d(x, y) \\, d\\pi(x, y) \\).",
                     "detection_source": "layout_symbol_heuristic_v3"
                 },
                 {
@@ -5675,7 +5675,7 @@
                         "x1": 63.34410095214844,
                         "y1": 204.23780822753906
                     },
-                    "vlm_transcription": "The equation is:\n\n\\[ y = -2x + 5 \\]",
+                    "vlm_transcription": "I'm unable to transcribe that equation. Can you provide more information or context?",
                     "detection_source": "layout_symbol_heuristic_v3"
                 }
             ],
@@ -8531,7 +8531,7 @@
                         "x1": 300.18450927734375,
                         "y1": 413.91937255859375
                     },
-                    "vlm_transcription": "L=12, H=768, A=12, To-",
+                    "vlm_transcription": "the same as BERT-Base (L=12, H=768, A=12, To-",
                     "detection_source": "layout_symbol_heuristic_v3"
                 }
             ],
@@ -8867,7 +8867,7 @@
                         "x1": 516.594482421875,
                         "y1": 241.40045166015625
                     },
-                    "vlm_transcription": "```\nAggregate:  .240  .250  .230  .027  .028  .025  .077  .078  .075\nword2vec:   .120  .120  .130  .099  .100  .097  .072  .070  .074\nELMo:       .230  .230  .240  .084  .085  .082  .072  .070  .074\nBERT:       .240  .230  .240  .084  .085  .081  .072  .070  .074\nNumBERT:    .220  .210  .220  .086  .088  .084  .072  .070  .074\n```",
+                    "vlm_transcription": "```\nAggregate  .240  .250  .230  .027  .028  .025  .077  .078  .075\nword2vec   .120  .120  .130  .099  .100  .097  .072  .070  .074\nELMo       .230  .230  .240  .084  .085  .082  .072  .070  .074\nBERT       .240  .230  .240  .084  .085  .081  .072  .070  .074\nNumBERT    .220  .210  .220  .086  .088  .084  .072  .070  .074\n```",
                     "detection_source": "layout_symbol_heuristic_v3"
                 },
                 {
@@ -8889,7 +8889,7 @@
                         "x1": 516.594482421875,
                         "y1": 380.6990966796875
                     },
-                    "vlm_transcription": "```\nAggregate    .150  .150  .150  .026  .027  .024  .076  .077  .074\nword2vec     .200  .190  .200  .088  .090  .086  .077  .076  .080\nELMo         .210  .200  .210  .087  .088  .085  .077  .076  .080\nBERT         .220  .210  .220  .085  .086  .084  .077  .076  .080\nNumBERT      .200  .190  .200  .088  .089  .086  .077  .076  .080\n```",
+                    "vlm_transcription": "```\nAggregate   .150   .150   .150   .026   .027   .024   .076   .077   .074\nword2vec    .200   .190   .200   .088   .090   .086   .077   .076   .080\nELMo        .210   .200   .210   .087   .088   .085   .077   .076   .080\nBERT        .220   .210   .220   .085   .086   .084   .077   .076   .080\nNumBERT     .200   .190   .200   .088   .089   .086   .077   .076   .080\n```",
                     "detection_source": "layout_symbol_heuristic_v3"
                 },
                 {
@@ -8900,7 +8900,7 @@
                         "x1": 516.594482421875,
                         "y1": 450.3474426269531
                     },
-                    "vlm_transcription": "```\nAggregate  0.240  0.240  0.250  0.019  0.021  0.016  0.057  0.060  0.054\nword2vec   0.260  0.250  0.280  0.019  0.014  0.024  0.063  0.055  0.072\nELMo       0.370  0.360  0.380  0.016  0.018  0.013  0.051  0.053  0.047\nBERT       0.330  0.320  0.330  0.017  0.019  0.014  0.054  0.055  0.051\nNumBERT    0.320  0.320  0.330  0.017  0.019  0.014  0.051  0.053  0.048\n```",
+                    "vlm_transcription": "```\nAggregate  .240  .240  .250  .019  .021  .016  .057  .060  .054\nword2vec   .260  .250  .280  .019  .014  .024  .063  .055  .072\nELMo       .370  .360  .380  .016  .018  .013  .051  .053  .047\nBERT       .330  .320  .330  .017  .019  .014  .054  .055  .051\nNumBERT    .320  .320  .330  .017  .019  .014  .051  .053  .048\n```",
                     "detection_source": "layout_symbol_heuristic_v3"
                 },
                 {
@@ -8922,7 +8922,7 @@
                         "x1": 516.594482421875,
                         "y1": 589.6460571289062
                     },
-                    "vlm_transcription": "```\nAggregate:  .300   .280   .330   .022   .021   .024   .059   .055   .064\nword2vec:   .330   .320   .350   .021   .020   .023   .069   .066   .075\nELMo:       .430   .440   .420   .016   .015   .019   .057   .056   .059\nBERT:       .410   .390   .450   .017   .016   .019   .058   .057   .060\nNumBERT:    .420   .430   .410   .018   .016   .020   .053   .052   .055\n```",
+                    "vlm_transcription": "```\nAggregate  .300  .280  .330  .022  .021  .024  .059  .055  .064\nword2vec   .330  .320  .350  .021  .020  .023  .069  .066  .075\nELMo       .430  .440  .420  .016  .015  .019  .057  .056  .059\nBERT       .410  .390  .450  .017  .016  .019  .058  .057  .060\nNumBERT    .420  .430  .410  .018  .016  .020  .053  .052  .055\n```",
                     "detection_source": "layout_symbol_heuristic_v3"
                 },
                 {
@@ -8933,7 +8933,7 @@
                         "x1": 516.594482421875,
                         "y1": 659.29541015625
                     },
-                    "vlm_transcription": "```\nAggregate  .300  .280  .330  .022  .021  .024  .059  .055  .064\nword2vec   .350  .350  .360  .069  .069  .069  .077  .081  .070\nELMo       .280  .250  .330  .079  .080  .077  .077  .081  .070\nBERT       .260  .260  .240  .079  .076  .085  .077  .081  .070\nNumBERT    .230  .230  .240  .083  .081  .086  .077  .081  .070\n```",
+                    "vlm_transcription": "```\nAggregate  0.300  0.280  0.330  0.022  0.021  0.024  0.059  0.055  0.064\nword2vec   0.350  0.350  0.360  0.069  0.069  0.069  0.077  0.081  0.070\nELMo       0.280  0.250  0.330  0.079  0.080  0.077  0.077  0.081  0.070\nBERT       0.260  0.260  0.240  0.079  0.076  0.085  0.077  0.081  0.070\nNumBERT    0.230  0.230  0.240  0.083  0.081  0.086  0.077  0.081  0.070\n```",
                     "detection_source": "layout_symbol_heuristic_v3"
                 },
                 {
@@ -8944,7 +8944,7 @@
                         "x1": 516.594482421875,
                         "y1": 728.9447021484375
                     },
-                    "vlm_transcription": "```\nAggregate   .470    -    -    .010    -    .046    -    -\n\nword2vec    .510  .490  .540  .008  .008  .008  .041  .041  .041\n\nELMo        .540  .520  .570  .007  .007  .007  .038  .038  .039\n\nBERT        .570  .560  .580  .007  .007  .007  .038  .038  .039\n\nNumBERT     .550  .530  .570  .007  .007  .007  .038  .038  .039\n```",
+                    "vlm_transcription": "```\nAggregate  .470     -     -   .010     -   .046     -   \nword2vec   .510   .490  .540  .008   .008  .008  .041  .041  .041\nELMo       .540   .520  .570  .007   .007  .007  .038  .038  .039\nBERT       .570   .560  .580  .007   .007  .007  .038  .038  .039\nNumBERT    .550   .530  .570  .007   .007  .007  .038  .038  .039\n```",
                     "detection_source": "layout_symbol_heuristic_v3"
                 },
                 {
@@ -8955,7 +8955,7 @@
                         "x1": 516.594482421875,
                         "y1": 798.5940551757812
                     },
-                    "vlm_transcription": "```\nAggregate  .470  -     -    .010   -     .046  - \nword2vec   .450  .430  .480  .056  .058  .055  .092  .094  .090\nELMo       .420  .400  .460  .058  .059  .057  .092  .094  .090\nBERT       .440  .420  .460  .057  .059  .055  .092  .094  .090\nNumBERT    .420  .390  .460  .060  .062  .057  .092  .094  .090\n```",
+                    "vlm_transcription": "```\nAggregate  .470  -  -  .010  -  .046  -  \nword2vec   .450  .430  .480  .056  .058  .055  .092  .094  .090\nELMo       .420  .400  .460  .058  .059  .057  .092  .094  .090\nBERT       .440  .420  .460  .057  .059  .055  .092  .094  .090\nNumBERT    .420  .390  .460  .060  .062  .057  .092  .094  .090\n```",
                     "detection_source": "layout_symbol_heuristic_v3"
                 }
             ],

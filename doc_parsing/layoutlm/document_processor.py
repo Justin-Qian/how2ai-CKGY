@@ -4,29 +4,93 @@ import json
 from PIL import Image
 import io
 from datetime import datetime
-from typing import List, Optional, Tuple
+from typing import List, Optional, Tuple, Dict, Any, Union
 import argparse
-import asyncio # Import asyncio
-import re # Import regex for symbol checking
+import asyncio
+import re
+import uuid
 
 # Import configurations and data structures
 from . import config
 from .data_structures import (
-    ProcessedDocument, DocumentMetadata, PageData,
-    TextBlock, BoundingBox, Annotation, VisualElement, EquationElement
+    ProcessedDocument, Document, Section, Paragraph, Annotation,
+    BoundingBox, TextBlock, LegacyAnnotation, VisualElement, EquationElement,
+    PageData, DocumentMetadata, LegacyProcessedDocument
 )
 
 # Import helper functions
-from .layoutlm_utils import extract_layoutlm_features # Keep only necessary layoutlm import
+from .layoutlm_utils import extract_layoutlm_features
 from .vlm_utils import analyze_image_region_with_vlm
-from .cv_utils import detect_color_highlight_regions, detect_ink_regions # Import both CV functions
+from .cv_utils import detect_color_highlight_regions, detect_ink_regions
+
+# --- Document Section Detection Functions ---
+
+def is_citation_section(text: str) -> bool:
+    """
+    Detect if a section appears to be citations/references.
+    
+    Args:
+        text: The section heading or text block to analyze
+        
+    Returns:
+        True if the text indicates a citation/references section
+    """
+    citation_indicators = [
+        "reference", "references", "bibliography", "works cited", 
+        "literature cited", "cited literature"
+    ]
+    return any(indicator in text.lower() for indicator in citation_indicators)
+
+def is_appendix_section(text: str) -> bool:
+    """
+    Detect if a section is an appendix.
+    
+    Args:
+        text: The section heading or text block to analyze
+        
+    Returns:
+        True if the text indicates an appendix section
+    """
+    appendix_indicators = [
+        "appendix", "appendices", "supplementary", "supplemental", 
+        "additional material"
+    ]
+    return any(indicator in text.lower() for indicator in appendix_indicators)
+
+def is_summary_section(text: str, color_info=None) -> bool:
+    """
+    Detect if a section is a summary section, including color indicators.
+    
+    Args:
+        text: The section heading or text block to analyze
+        color_info: Optional color information if available
+        
+    Returns:
+        True if the text indicates a summary section
+    """
+    summary_indicators = ["summary"]
+    
+    # Check text indicators
+    text_match = any(indicator in text.lower() for indicator in summary_indicators)
+    
+    # Check if text appears to be in red (if color info available)
+    is_red_text = False
+    if color_info and 'stroke' in color_info:
+        r, g, b = color_info['stroke']
+        # Simple red detection (high R, low G and B)
+        if r > 0.7 and g < 0.4 and b < 0.4:
+            is_red_text = True
+    
+    return text_match or is_red_text
+
+# --- Utility Functions ---
 
 def pdf_coords_to_bbox(rect: fitz.Rect) -> BoundingBox:
     """Converts PyMuPDF Rect coordinates to our BoundingBox model."""
     return BoundingBox(x0=rect.x0, y0=rect.y0, x1=rect.x1, y1=rect.y1)
 
-# Helper function to check if a rectangle is likely too thin or wide (potentially decorative)
 def is_extreme_aspect_ratio(rect: fitz.Rect, max_ratio: float = 10.0) -> bool:
+    """Check if a rectangle is likely too thin or wide (potentially decorative)."""
     width = rect.width
     height = rect.height
     if width <= 0 or height <= 0:
@@ -34,7 +98,20 @@ def is_extreme_aspect_ratio(rect: fitz.Rect, max_ratio: float = 10.0) -> bool:
     ratio = max(width / height, height / width)
     return ratio > max_ratio
 
-def interpret_annotation_semantics(annotation_data: Annotation) -> Optional[str]:
+def is_rect_overlap(bbox1: BoundingBox, bbox2: BoundingBox) -> bool:
+    """Check if two bounding boxes overlap."""
+    # Check if one rectangle is to the left of the other
+    if bbox1.x1 < bbox2.x0 or bbox2.x1 < bbox1.x0:
+        return False
+    
+    # Check if one rectangle is above the other
+    if bbox1.y1 < bbox2.y0 or bbox2.y1 < bbox1.y0:
+        return False
+    
+    # If we get here, the rectangles overlap
+    return True
+
+def interpret_annotation_semantics(annotation_data: LegacyAnnotation) -> Optional[str]:
     """Interprets the semantic meaning of an annotation based on rules in config."""
     semantic_map = getattr(config, 'ANNOTATION_SEMANTIC_MAP', {})
     if not semantic_map:
@@ -336,7 +413,7 @@ async def process_page_async(page: fitz.Page, page_num: int, total_pages: int) -
                 elif annot_type_code == fitz.PDF_ANNOT_CIRCLE: annot_type_str = "circle"
                 elif annot_type_code == fitz.PDF_ANNOT_INK: annot_type_str, vertices_info = "ink", annot.vertices
                 else: annot_type_str = annot_type_str.lower()
-                annotation_obj = Annotation(
+                annotation_obj = LegacyAnnotation(
                     type=annot_type_str.lower(), bbox=pdf_coords_to_bbox(annot_rect),
                     text_content=text_in_annot or None, comment_info=comment_info,
                     color=color_info or None, vertices=vertices_info or None
@@ -371,7 +448,7 @@ async def process_page_async(page: fitz.Page, page_num: int, total_pages: int) -
                     y1_pdf = cv_bbox['y1'] * (page_height / img_render_height)
                     pdf_rect = fitz.Rect(x0_pdf, y0_pdf, x1_pdf, y1_pdf)
                     text_in_cv_annot = page.get_text("text", clip=pdf_rect, sort=True).strip()
-                    annotation_obj = Annotation(
+                    annotation_obj = LegacyAnnotation(
                         type="cv_highlight", bbox=pdf_coords_to_bbox(pdf_rect),
                         text_content=text_in_cv_annot or None, color=None,
                         detected_color_name=color_name
@@ -408,7 +485,7 @@ async def process_page_async(page: fitz.Page, page_num: int, total_pages: int) -
                     y1_pdf = cv_bbox['y1'] * (page_height / img_render_height)
                     pdf_rect = fitz.Rect(x0_pdf, y0_pdf, x1_pdf, y1_pdf)
                     text_in_cv_annot = None 
-                    annotation_obj = Annotation(
+                    annotation_obj = LegacyAnnotation(
                         type="cv_drawing", bbox=pdf_coords_to_bbox(pdf_rect),
                         text_content=None, color=None, 
                         detected_color_name="red"
@@ -507,9 +584,10 @@ async def process_page_async(page: fitz.Page, page_num: int, total_pages: int) -
     
     return page_data
 
-async def process_document(pdf_path: str) -> ProcessedDocument:
+async def process_document(pdf_path: str) -> Tuple[LegacyProcessedDocument, ProcessedDocument]:
     """
     Processes the entire PDF document asynchronously.
+    Returns both the legacy and new format ProcessedDocument.
     """
     doc = None # Initialize doc to None
     try:
@@ -518,7 +596,8 @@ async def process_document(pdf_path: str) -> ProcessedDocument:
         total_pages = len(doc)
         print(f"Processing document: {filename} ({total_pages} pages)")
 
-        processed_doc = ProcessedDocument(
+        # Legacy document format
+        legacy_processed_doc = LegacyProcessedDocument(
             metadata=DocumentMetadata(
                 filename=filename,
                 total_pages=total_pages,
@@ -527,38 +606,614 @@ async def process_document(pdf_path: str) -> ProcessedDocument:
             pages=[]
         )
 
+        # New document format - initialize basic structure
+        doc_id = f"doc_{uuid.uuid4().hex[:8]}"
+        
+        new_processed_doc = ProcessedDocument(
+            document=Document(
+                id=doc_id,
+                title=filename,
+                sections=[],
+                character_start=0,
+                character_end=0,  # Will be updated after processing
+                summary=None  # Extract from last section if available
+            ),
+            sections=[],
+            paragraphs=[],
+            annotations=[],
+            metadata={
+                "filename": filename,
+                "total_pages": total_pages,
+                "processing_timestamp": datetime.now().isoformat()
+            }
+        )
+
+        # Process pages normally
+        total_text_length = 0
+        section_counter = 0
+        paragraph_counter = 0
+        annotation_counter = 0
+        current_section = None
+        
+        # Section tracking flags
+        in_citation_section = False
+        in_appendix_section = False
+        in_summary_section = False
+        summary_sections = [] # Keep track of sections that might be summaries
+        
         for page_index in range(total_pages):
             page = doc[page_index]
             page_data = await process_page_async(page, page_index + 1, total_pages)
-            processed_doc.pages.append(page_data)
-            page = None # Attempt to free memory
-            page_data = None # Attempt to free memory
-
+            legacy_processed_doc.pages.append(page_data)
+            
+            # Track if we've processed any content on this page
+            any_content_processed = False
+            
+            # Build paragraphs for new format
+            for text_block in page_data.text_blocks:
+                block_text = text_block.text.strip()
+                if not block_text:
+                    continue
+                
+                # Detect if this is a heading (simplified - can be improved)
+                is_heading = False
+                if len(block_text) < 100 and (
+                    block_text.isupper() or 
+                    any(heading in block_text.lower() for heading in [
+                        "introduction", "abstract", "summary", "conclusion", 
+                        "method", "result", "discussion", "reference", "appendix",
+                        "chapter"
+                    ])
+                ):
+                    is_heading = True
+                
+                # Check for section boundaries
+                if is_heading:
+                    # Check for citation/reference section
+                    if is_citation_section(block_text):
+                        in_citation_section = True
+                        in_appendix_section = False
+                        in_summary_section = False
+                        print(f"Detected citation section on page {page_index+1}: '{block_text}'")
+                    
+                    # Check for appendix section
+                    elif is_appendix_section(block_text):
+                        in_citation_section = False
+                        in_appendix_section = True
+                        in_summary_section = False
+                        print(f"Detected appendix section on page {page_index+1}: '{block_text}'")
+                    
+                    # Check for summary section
+                    elif is_summary_section(block_text):
+                        in_citation_section = False
+                        in_appendix_section = False
+                        in_summary_section = True
+                        print(f"Detected summary section on page {page_index+1}: '{block_text}'")
+                
+                # Skip citation sections but process appendix and summary
+                if in_citation_section and not in_appendix_section and not in_summary_section:
+                    continue
+                
+                # If this is a heading, start a new section
+                if is_heading:
+                    section_id = f"sec_{section_counter + 1}"
+                    section_counter += 1
+                    current_section = Section(
+                        id=section_id,
+                        heading=block_text,
+                        character_start=total_text_length,
+                        character_end=total_text_length + len(block_text),
+                        paragraphs=[]
+                    )
+                    new_processed_doc.document.sections.append(section_id)
+                    new_processed_doc.sections.append(current_section)
+                    
+                    # Track potential summary sections
+                    if in_summary_section or is_summary_section(block_text):
+                        summary_sections.append(section_id)
+                    
+                    # Also create a paragraph for the heading
+                    para_id = f"para_{paragraph_counter:03d}"
+                    paragraph_counter += 1
+                    paragraph = Paragraph(
+                        id=para_id,
+                        text=block_text,
+                        character_start=total_text_length,
+                        character_end=total_text_length + len(block_text),
+                        annotations=[],
+                        bbox=text_block.bbox,
+                        page_number=page_index
+                    )
+                    
+                    if current_section:
+                        current_section.paragraphs.append(para_id)
+                    
+                    new_processed_doc.paragraphs.append(paragraph)
+                    total_text_length += len(block_text)
+                    any_content_processed = True
+                else:
+                    # Regular paragraph - skip if in citation section
+                    if in_citation_section and not in_appendix_section and not in_summary_section:
+                        continue
+                        
+                    para_id = f"para_{paragraph_counter:03d}"
+                    paragraph_counter += 1
+                    paragraph = Paragraph(
+                        id=para_id,
+                        text=block_text,
+                        character_start=total_text_length,
+                        character_end=total_text_length + len(block_text),
+                        annotations=[],
+                        bbox=text_block.bbox,
+                        page_number=page_index
+                    )
+                    
+                    if current_section:
+                        current_section.paragraphs.append(para_id)
+                    
+                    new_processed_doc.paragraphs.append(paragraph)
+                    total_text_length += len(block_text)
+                    any_content_processed = True
+            
+            # Process visual elements and equations (especially important for summary)
+            if page_data.visual_elements or page_data.equations:
+                print(f"  Processing {len(page_data.visual_elements)} visual elements and {len(page_data.equations)} equations on page {page_index+1}")
+                
+                # Process visual elements with improved handling
+                for visual_elem in page_data.visual_elements:
+                    # Create a paragraph-like structure for the visual element
+                    vis_elem_id = f"para_vis_{paragraph_counter:03d}"
+                    paragraph_counter += 1
+                    
+                    # Determine element type with more detail
+                    visual_type = visual_elem.type
+                    
+                    # Create better description text
+                    description = visual_elem.vlm_description or f"Visual element ({visual_type})"
+                    
+                    # Create a proper paragraph for visual element
+                    vis_paragraph = Paragraph(
+                        id=vis_elem_id,
+                        text=description,
+                        character_start=total_text_length,
+                        character_end=total_text_length + len(description),
+                        annotations=[],
+                        bbox=visual_elem.bbox,
+                        page_number=page_index
+                    )
+                    
+                    # Create a special annotation to mark this as a visual element
+                    viz_annot_id = f"ann_vis_{annotation_counter:02d}"
+                    annotation_counter += 1
+                    
+                    # Preserve original visual element type in semantic_tag
+                    viz_annotation = Annotation(
+                        id=viz_annot_id,
+                        type="visual_element",  # Use distinct type for visual elements
+                        color="#3366FF",  # Blue color for visual elements
+                        referenced_text=description[:50] + ("..." if len(description) > 50 else ""),
+                        referenced_char_start=total_text_length,
+                        referenced_char_end=total_text_length + min(50, len(description)),
+                        previous_text="",
+                        posterior_text="",
+                        paragraph_id=vis_elem_id,
+                        annotated_text=f"VISUAL: {visual_type}",
+                        bbox=visual_elem.bbox,
+                        comment_info=None,
+                        vertices=None,
+                        semantic_tag=visual_type,  # Store original visual type
+                        detected_color_name="blue",
+                        color_info=None
+                    )
+                    
+                    # Connect visual element to the current section
+                    if current_section:
+                        current_section.paragraphs.append(vis_elem_id)
+                    
+                    # Add to document
+                    new_processed_doc.paragraphs.append(vis_paragraph)
+                    vis_paragraph.annotations.append(viz_annot_id)
+                    new_processed_doc.annotations.append(viz_annotation)
+                    
+                    total_text_length += len(description)
+                    any_content_processed = True
+                
+                # Process equations with improved handling
+                for equation in page_data.equations:
+                    # Create a paragraph-like structure for the equation
+                    eqn_id = f"para_eqn_{paragraph_counter:03d}"
+                    paragraph_counter += 1
+                    
+                    # Create better equation text
+                    eqn_text = equation.vlm_transcription or "Mathematical equation"
+                    if eqn_text.startswith("```") or eqn_text.startswith("$$"):
+                        # Clean up common LaTeX delimiters in VLM output
+                        eqn_text = eqn_text.replace("```", "").replace("$$", "$").replace("\\[", "$").replace("\\]", "$")
+                    
+                    # Create paragraph for equation
+                    eqn_paragraph = Paragraph(
+                        id=eqn_id,
+                        text=eqn_text,
+                        character_start=total_text_length,
+                        character_end=total_text_length + len(eqn_text),
+                        annotations=[],
+                        bbox=equation.bbox,
+                        page_number=page_index
+                    )
+                    
+                    # Also create a special annotation for this equation
+                    eqn_annot_id = f"ann_eqn_{annotation_counter:02d}"
+                    annotation_counter += 1
+                    
+                    # Use specific type for equations to distinguish them
+                    eqn_annotation = Annotation(
+                        id=eqn_annot_id,
+                        type="equation",  # Use distinct type for equations
+                        color="#FF6600",  # Orange color for equations
+                        referenced_text=eqn_text[:50] + ("..." if len(eqn_text) > 50 else ""),
+                        referenced_char_start=total_text_length,
+                        referenced_char_end=total_text_length + min(50, len(eqn_text)),
+                        previous_text="",
+                        posterior_text="",
+                        paragraph_id=eqn_id,
+                        annotated_text="EQUATION",
+                        bbox=equation.bbox,
+                        comment_info=None,
+                        vertices=None,
+                        semantic_tag="equation",
+                        detected_color_name="orange",
+                        color_info=None
+                    )
+                    
+                    # Add to section
+                    if current_section:
+                        current_section.paragraphs.append(eqn_id)
+                    
+                    # Add to document
+                    new_processed_doc.paragraphs.append(eqn_paragraph)
+                    eqn_paragraph.annotations.append(eqn_annot_id)
+                    new_processed_doc.annotations.append(eqn_annotation)
+                    
+                    total_text_length += len(eqn_text)
+                    any_content_processed = True
+            
+            # Process annotations for new format - prioritize non-citation sections
+            if not in_citation_section or in_appendix_section or in_summary_section:
+                for annot in page_data.annotations:
+                    annotation_id = f"ann_{annotation_counter:02d}"
+                    annotation_counter += 1
+                    
+                    # Find the paragraph this annotation belongs to
+                    matched_para_id = None
+                    closest_para = None
+                    min_distance = float('inf')
+                    
+                    # First try exact overlap
+                    for para in new_processed_doc.paragraphs:
+                        # Only consider paragraphs on the same page
+                        if para.page_number != page_index:
+                            continue
+                            
+                        if para.bbox and is_rect_overlap(annot.bbox, para.bbox):
+                            matched_para_id = para.id
+                            break
+                    
+                    # If can't find by spatial overlap, try to match by content with more robust method
+                    if not matched_para_id and annot.text_content:
+                        for para in new_processed_doc.paragraphs:
+                            # Only consider paragraphs on the same page
+                            if para.page_number != page_index:
+                                continue
+                                
+                            # Try exact content match first
+                            if annot.text_content in para.text:
+                                matched_para_id = para.id
+                                break
+                            
+                            # If still no match, check for partial match with minimum 4-character overlap
+                            # to avoid accidental matches on single characters or short sequences
+                            if len(annot.text_content) >= 4:
+                                # Look for at least 4-character sequences
+                                for i in range(len(annot.text_content) - 3):
+                                    substr = annot.text_content[i:i+4]
+                                    if substr in para.text:
+                                        matched_para_id = para.id
+                                        break
+                                if matched_para_id:
+                                    break
+                    
+                    # If still no match, use the closest paragraph on the same page
+                    if not matched_para_id:
+                        for para in new_processed_doc.paragraphs:
+                            # Only consider paragraphs on the same page
+                            if para.page_number != page_index:
+                                continue
+                                
+                            if para.bbox and annot.bbox:
+                                # Calculate distance between centers
+                                para_center_x = (para.bbox.x0 + para.bbox.x1) / 2
+                                para_center_y = (para.bbox.y0 + para.bbox.y1) / 2
+                                annot_center_x = (annot.bbox.x0 + annot.bbox.x1) / 2
+                                annot_center_y = (annot.bbox.y0 + annot.bbox.y1) / 2
+                                
+                                distance = ((para_center_x - annot_center_x) ** 2 + 
+                                        (para_center_y - annot_center_y) ** 2) ** 0.5
+                                
+                                if distance < min_distance:
+                                    min_distance = distance
+                                    closest_para = para
+                        
+                        if closest_para:
+                            matched_para_id = closest_para.id
+                    
+                    # If a paragraph match was found or created
+                    if matched_para_id:
+                        para = next(p for p in new_processed_doc.paragraphs if p.id == matched_para_id)
+                        
+                        # Get referenced text with improved handling
+                        referenced_text = annot.text_content or ""
+                        
+                        # Initialize prev_text and post_text to empty strings by default
+                        prev_text = ""
+                        post_text = ""
+                        
+                        # Find character start/end in paragraph
+                        char_start = para.character_start
+                        char_end = char_start + len(referenced_text) if referenced_text else para.character_end
+                        
+                        # If text is in paragraph, get exact position
+                        if referenced_text and referenced_text in para.text:
+                            start_in_para = para.text.find(referenced_text)
+                            char_start = para.character_start + start_in_para
+                            char_end = char_start + len(referenced_text)
+                            
+                            # Get context before and after
+                            context_size = 50  # Number of characters for context
+                            prev_text = para.text[max(0, start_in_para - context_size):start_in_para]
+                            post_text = para.text[start_in_para + len(referenced_text):
+                                              min(len(para.text), start_in_para + len(referenced_text) + context_size)]
+                        elif referenced_text and len(referenced_text) >= 4:
+                            # Try to find partial match
+                            match_found = False
+                            for i in range(len(referenced_text) - 3):
+                                substr = referenced_text[i:i+4]
+                                if substr in para.text:
+                                    start_in_para = para.text.find(substr)
+                                    max_match_len = min(len(referenced_text) - i, len(para.text) - start_in_para)
+                                    match_len = 4  # Start with minimum match length
+                                    
+                                    # Extend match as far as possible
+                                    while match_len < max_match_len and referenced_text[i:i+match_len+1] == para.text[start_in_para:start_in_para+match_len+1]:
+                                        match_len += 1
+                                    
+                                    char_start = para.character_start + start_in_para
+                                    char_end = char_start + match_len
+                                    
+                                    # Get context
+                                    context_size = 50
+                                    prev_text = para.text[max(0, start_in_para - context_size):start_in_para]
+                                    post_text = para.text[start_in_para + match_len:
+                                                    min(len(para.text), start_in_para + match_len + context_size)]
+                                    
+                                    # Use the matched text
+                                    referenced_text = para.text[start_in_para:start_in_para+match_len]
+                                    match_found = True
+                                    break
+                            
+                            # If no match was found in the loop, keep defaults
+                            if not match_found:
+                                # No specific text match, use entire paragraph reference as fallback
+                                prev_text = ""
+                                post_text = ""
+                        
+                        # Determine annotation type with improved handling
+                        annot_type = annot.type
+                        if annot_type == "cv_highlight":
+                            annot_type = "highlight"
+                        elif annot_type == "cv_drawing" or annot_type == "ink":
+                            annot_type = "ink" if annot.vertices else "symbol"
+                        
+                        # Special handling for ink annotations with vertices
+                        vertices = None
+                        if annot.vertices and annot_type == "ink":
+                            vertices = annot.vertices
+                        
+                        # Determine color with more robust handling
+                        color = annot.detected_color_name or "yellow"  # Default to yellow if not specified
+                        if annot.color and isinstance(annot.color, dict):
+                            if "stroke" in annot.color:
+                                r, g, b = annot.color["stroke"]
+                                color = f"#{int(r*255):02x}{int(g*255):02x}{int(b*255):02x}"
+                            elif any(key in annot.color for key in ["fill", "interior"]):
+                                key = next(k for k in ["fill", "interior"] if k in annot.color)
+                                r, g, b = annot.color[key]
+                                color = f"#{int(r*255):02x}{int(g*255):02x}{int(b*255):02x}"
+                        
+                        # Create annotation with complete information
+                        annotation = Annotation(
+                            id=annotation_id,
+                            type=annot_type,
+                            color=color,
+                            referenced_text=referenced_text,
+                            referenced_char_start=char_start,
+                            referenced_char_end=char_end,
+                            previous_text=prev_text,
+                            posterior_text=post_text,
+                            paragraph_id=matched_para_id,
+                            annotated_text=referenced_text,  # For highlight, it duplicates referenced_text
+                            bbox=annot.bbox,
+                            comment_info=annot.comment_info,
+                            vertices=vertices,
+                            semantic_tag=annot.semantic_tag,
+                            detected_color_name=annot.detected_color_name,
+                            color_info=annot.color
+                        )
+                        
+                        # Add annotation to list and to paragraph
+                        para.annotations.append(annotation_id)
+                        new_processed_doc.annotations.append(annotation)
+                        any_content_processed = True
+                    else:
+                        # If no paragraph match, create a special standalone paragraph for this annotation
+                        para_id = f"para_{paragraph_counter:03d}"
+                        paragraph_counter += 1
+                        
+                        # Create text for annotation
+                        annot_text = annot.text_content or f"Annotation: {annot.type}"
+                        
+                        # Create paragraph for annotation
+                        paragraph = Paragraph(
+                            id=para_id,
+                            text=annot_text,
+                            character_start=total_text_length,
+                            character_end=total_text_length + len(annot_text),
+                            annotations=[],
+                            bbox=annot.bbox,
+                            page_number=page_index
+                        )
+                        
+                        # Add paragraph to document
+                        if current_section:
+                            current_section.paragraphs.append(para_id)
+                        new_processed_doc.paragraphs.append(paragraph)
+                        total_text_length += len(annot_text)
+                        
+                        # Create annotation linked to this paragraph
+                        annotation = Annotation(
+                            id=annotation_id,
+                            type=annot.type,
+                            color=annot.detected_color_name or "yellow",
+                            referenced_text=annot_text,
+                            referenced_char_start=total_text_length - len(annot_text),
+                            referenced_char_end=total_text_length,
+                            previous_text="",
+                            posterior_text="",
+                            paragraph_id=para_id,
+                            annotated_text=annot_text,
+                            bbox=annot.bbox,
+                            comment_info=annot.comment_info,
+                            vertices=annot.vertices,
+                            semantic_tag=annot.semantic_tag,
+                            detected_color_name=annot.detected_color_name,
+                            color_info=annot.color
+                        )
+                        
+                        # Add annotation to list and to paragraph
+                        paragraph.annotations.append(annotation_id)
+                        new_processed_doc.annotations.append(annotation)
+                        any_content_processed = True
+            
+            # Print page processing status
+            if any_content_processed:
+                print(f"  Processed content from page {page_index+1}")
+            else:
+                print(f"  No content extracted from page {page_index+1}")
+                
+            page = None  # Free memory
+            
+        # Update document's total character count
+        new_processed_doc.document.character_end = total_text_length
+        
+        # If no sections were detected, create a single default section
+        if not new_processed_doc.sections:
+            default_section = Section(
+                id="sec_1",
+                heading="Document",
+                character_start=0,
+                character_end=total_text_length,
+                paragraphs=[p.id for p in new_processed_doc.paragraphs]
+            )
+            new_processed_doc.document.sections.append("sec_1")
+            new_processed_doc.sections.append(default_section)
+        
+        # Extract summary from tracked summary sections or from last section if none found
+        summary_text = None
+        
+        # First try to extract from detected summary sections
+        if summary_sections:
+            summary_paragraphs = []
+            for section_id in summary_sections:
+                section = next((s for s in new_processed_doc.sections if s.id == section_id), None)
+                if section:
+                    for para_id in section.paragraphs:
+                        para = next((p for p in new_processed_doc.paragraphs if p.id == para_id), None)
+                        if para:
+                            summary_paragraphs.append(para.text)
+            
+            if summary_paragraphs:
+                summary_text = " ".join(summary_paragraphs)
+                print(f"Extracted summary from explicitly marked summary sections ({len(summary_paragraphs)} paragraphs)")
+        
+        # If no summary found, try to find from any section with summary in the title
+        if not summary_text:
+            for section in reversed(new_processed_doc.sections):
+                if is_summary_section(section.heading):
+                    summary_paragraphs = []
+                    for para_id in section.paragraphs:
+                        para = next((p for p in new_processed_doc.paragraphs if p.id == para_id), None)
+                        if para:
+                            summary_paragraphs.append(para.text)
+                    
+                    if summary_paragraphs:
+                        summary_text = " ".join(summary_paragraphs)
+                        print(f"Extracted summary from section with summary in title: '{section.heading}' ({len(summary_paragraphs)} paragraphs)")
+                        break
+        
+        # If still no summary, try to extract from last non-citation, non-appendix section
+        if not summary_text:
+            # Go backwards through sections to find the last main content section
+            for section in reversed(new_processed_doc.sections):
+                if not is_citation_section(section.heading) and not is_appendix_section(section.heading):
+                    summary_paragraphs = []
+                    # Get the first few paragraphs only
+                    for para_id in section.paragraphs[:3]:  # Limit to first 3 paragraphs
+                        para = next((p for p in new_processed_doc.paragraphs if p.id == para_id), None)
+                        if para:
+                            summary_paragraphs.append(para.text)
+                    
+                    if summary_paragraphs:
+                        summary_text = " ".join(summary_paragraphs)
+                        print(f"Extracted summary from last main content section: '{section.heading}' ({len(summary_paragraphs)} paragraphs)")
+                        break
+        
+        new_processed_doc.document.summary = summary_text
+        
         print("--- Document Processing Complete ---")
-        return processed_doc
+        return legacy_processed_doc, new_processed_doc
 
     except Exception as e:
         print(f"Error processing PDF {pdf_path}: {e}")
-        # Return an empty ProcessedDocument or raise error
-        return ProcessedDocument(metadata=DocumentMetadata(filename=os.path.basename(pdf_path) if pdf_path else 'unknown', total_pages=0))
+        # Return empty documents
+        return (
+            LegacyProcessedDocument(metadata=DocumentMetadata(filename=os.path.basename(pdf_path) if pdf_path else 'unknown', total_pages=0)),
+            ProcessedDocument(
+                document=Document(
+                    id=f"doc_error",
+                    title=os.path.basename(pdf_path) if pdf_path else 'unknown',
+                    sections=[],
+                    character_end=0
+                ),
+                sections=[],
+                paragraphs=[],
+                annotations=[]
+            )
+        )
     finally:
         if doc: # Ensure doc is closed even if errors occurred after opening
             doc.close()
 
-def save_processed_document(processed_doc: ProcessedDocument, output_dir: str, filename: str):
+def save_processed_document(processed_doc: Union[LegacyProcessedDocument, ProcessedDocument], output_dir: str, filename: str):
     """Saves the processed document data to a JSON file."""
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     output_path = os.path.join(output_dir, filename)
 
     # Use Pydantic's serialization method for proper handling of types
-    # Use model_dump_json for direct JSON string output
     json_output = processed_doc.model_dump_json(indent=getattr(config, 'JSON_INDENT', 2))
 
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(json_output)
     print(f"Processed document saved to: {output_path}")
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process a PDF document to extract multimodal features.")
@@ -578,19 +1233,28 @@ if __name__ == "__main__":
         # Ensure output dir exists for JSON filename generation
         if not os.path.exists(config.OUTPUT_DIR):
             os.makedirs(config.OUTPUT_DIR)
-        output_json_filename = f"{file_name_without_ext}_processed.json"
-        output_json_path = os.path.join(config.OUTPUT_DIR, output_json_filename)
+        legacy_output_json_filename = f"{file_name_without_ext}_processed_legacy.json"
+        new_output_json_filename = f"{file_name_without_ext}_processed.json"
 
-        processed_data = asyncio.run(process_document(pdf_file))
+        legacy_processed_data, new_processed_data = asyncio.run(process_document(pdf_file))
 
-        # Check if processed_data is valid before saving
-        if processed_data and processed_data.pages:
+        # Save both formats
+        if legacy_processed_data and legacy_processed_data.pages:
             save_processed_document(
-                processed_data,
+                legacy_processed_data,
                 config.OUTPUT_DIR,
-                output_json_filename 
+                legacy_output_json_filename 
             )
         else:
-            print("Error: Document processing failed or produced no data. Skipping save.")
+            print("Error: Legacy document processing failed or produced no data. Skipping save.")
+        
+        if new_processed_data and new_processed_data.document:
+            save_processed_document(
+                new_processed_data,
+                config.OUTPUT_DIR,
+                new_output_json_filename 
+            )
+        else:
+            print("Error: New document processing failed or produced no data. Skipping save.")
             
     print("Pipeline finished.")

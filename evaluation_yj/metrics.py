@@ -33,45 +33,88 @@ def calculate_rouge(reference, candidate):
         candidate (str): Candidate text
 
     Returns:
-        dict: Dictionary with ROUGE-1, ROUGE-2 and ROUGE-L scores
+        dict: Dictionary with ROUGE-1 and ROUGE-L scores
     """
     try:
-        scorer = rouge_scorer.RougeScorer(['rouge1', 'rouge2', 'rougeL'], use_stemmer=True)
+        scorer = rouge_scorer.RougeScorer(['rouge1', 'rougeL'], use_stemmer=True)
         scores = scorer.score(reference, candidate)
         return {
             "rouge-1": {"f": scores['rouge1'].fmeasure},
-            "rouge-2": {"f": scores['rouge2'].fmeasure},
             "rouge-l": {"f": scores['rougeL'].fmeasure}
         }
     except:
-        return {"rouge-1": {"f": 0.0}, "rouge-2": {"f": 0.0}, "rouge-l": {"f": 0.0}}
+        return {"rouge-1": {"f": 0.0}, "rouge-l": {"f": 0.0}}
 
-def evaluate_text(reference, candidate):
+def highlight_R_P_F1(highlight, candidate):
     """
-    Evaluate similarity between reference and candidate texts.
+    Calculate Precision, Recall and F1 score for highlight coverage.
+
+    Args:
+        highlight (str): Highlight text
+        candidate (str): Candidate text
+
+    Returns:
+        dict: Dictionary containing highlight-p (precision), highlight-r (recall) and highlight-f1 scores
+    """
+    try:
+        # 读取stopwords
+        with open('stopwords.txt', 'r', encoding='utf-8') as f:
+            stopwords = set(line.strip() for line in f)
+
+        # 使用集合差运算来过滤stopwords
+        highlight_tokens = set(highlight.lower().split()) - stopwords
+        candidate_tokens = set(candidate.lower().split()) - stopwords
+
+        # 计算交集
+        intersection = highlight_tokens.intersection(candidate_tokens)
+        intersection_size = len(intersection)
+
+        # 计算precision, recall 和 f1
+        recall = intersection_size / len(highlight_tokens) if highlight_tokens else 0.0
+        precision = intersection_size / len(candidate_tokens) if candidate_tokens else 0.0
+        f1 = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0.0
+
+        return {
+            "highlight-p": precision,
+            "highlight-r": recall,
+            "highlight-f1": f1
+        }
+    except Exception as e:
+        print(f"Error in highlight calculation: {str(e)}")
+        return {
+            "highlight-p": 0.0,
+            "highlight-r": 0.0,
+            "highlight-f1": 0.0
+        }
+
+def evaluate_text(reference, candidate, highlight):
+    """
+    Evaluate similarity between reference and candidate texts, and calculate highlight coverage.
 
     Args:
         reference (str): Reference text
         candidate (str): Candidate text
+        highlight (str): Highlight text to check coverage against candidate
 
     Returns:
-        dict: Dictionary with all evaluation metrics
+        dict: Dictionary with all evaluation metrics including BLEU, ROUGE scores and highlight coverage metrics
     """
     bleu = calculate_bleu(reference, candidate)
     rouge = calculate_rouge(reference, candidate)
+    highlight_scores = highlight_R_P_F1(highlight, candidate)
 
     # Extract ROUGE scores
     rouge_1 = rouge["rouge-1"]["f"]
-    rouge_2 = rouge["rouge-2"]["f"]
     rouge_l = rouge["rouge-l"]["f"]
 
     # Calculate overall score
     metrics = {
         "bleu": bleu,
         "rouge-1": rouge_1,
-        "rouge-2": rouge_2,
         "rouge-L": rouge_l,
-        "overall": np.mean([bleu, rouge_1, rouge_2, rouge_l])
+        "highlight-p": highlight_scores["highlight-p"],
+        "highlight-r": highlight_scores["highlight-r"],
+        "highlight-f1": highlight_scores["highlight-f1"],
     }
 
     return metrics
@@ -81,18 +124,10 @@ if __name__ == "__main__":
     # Example usage
     reference_text = "The quick brown fox jumps over the lazy dog."
     candidate_text = "The quick brown fox jumps over a lazy dog."
-
-    # Calculate individual metrics
-    bleu = calculate_bleu(reference_text, candidate_text)
-    rouge = calculate_rouge(reference_text, candidate_text)
-
-    print(f"BLEU score: {bleu:.4f}")
-    print(f"ROUGE-1 F1 score: {rouge['rouge-1']['f']:.4f}")
-    print(f"ROUGE-2 F1 score: {rouge['rouge-2']['f']:.4f}")
-    print(f"ROUGE-L F1 score: {rouge['rouge-l']['f']:.4f}")
+    highlight_text = "quick fox lazy"  # 示例重点文本
 
     # Using the combined evaluation function
     print("\nUsing combined evaluation:")
-    metrics = evaluate_text(reference_text, candidate_text)
+    metrics = evaluate_text(reference_text, candidate_text, highlight_text)
     for metric, value in metrics.items():
         print(f"{metric}: {value:.4f}")

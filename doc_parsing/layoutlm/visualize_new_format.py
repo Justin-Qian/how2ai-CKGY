@@ -11,7 +11,7 @@ VIZ_COLORS = {
     "paragraph": (0.0, 0.5, 0.2),      # Green
     "annotation_default": (1, 0, 0),   # Red
     "highlight": (0.9, 0.9, 0),        # Yellow
-    "comment": (0, 0.7, 0.7),          # Teal
+    "comment": (1.0, 0.0, 0.0),        # Red for comments
     "symbol": (1.0, 0.0, 0.0),         # Red
     "visual_element": (0.0, 0.3, 0.8), # Blue
     "equation": (0.8, 0.4, 0.0),       # Orange
@@ -21,7 +21,7 @@ VIZ_COLORS = {
 # Add corresponding fill colors with transparency for highlighting
 VIZ_FILL_COLORS = {
     "highlight": (0.9, 0.9, 0, 0.3),     # Yellow with transparency
-    "comment": (0, 0.7, 0.7, 0.2),       # Teal with transparency
+    "comment": (1.0, 0.0, 0.0, 0.2),     # Red with transparency
     "symbol": (1.0, 0.0, 0.0, 0.1),      # Red with transparency
     "visual_element": (0.0, 0.3, 0.8, 0.2),  # Blue with transparency
     "equation": (0.8, 0.4, 0.0, 0.15),   # Orange with transparency

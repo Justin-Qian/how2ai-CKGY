@@ -1,27 +1,42 @@
-import fitz  # PyMuPDF
 import os
+import sys
 import json
-from PIL import Image
-import io
-from datetime import datetime
-from typing import List, Optional, Tuple, Dict, Any, Union
 import argparse
 import asyncio
+import numpy as np
 import re
+from datetime import datetime
 import uuid
+from PIL import Image
+import fitz  # PyMuPDF
+from typing import List, Dict, Tuple, Optional, Union
 
-# Import configurations and data structures
-from . import config
-from .data_structures import (
-    ProcessedDocument, Document, Section, Paragraph, Annotation,
-    BoundingBox, TextBlock, LegacyAnnotation, VisualElement, EquationElement,
-    PageData, DocumentMetadata, LegacyProcessedDocument
-)
+try:
+    import config
+except ImportError:
+    # Try relative import as fallback
+    try:
+        from . import config
+    except ImportError:
+        print("Warning: Could not import config module. Using default settings.")
+        # Create a minimal config
+        class DefaultConfig:
+            def __init__(self):
+                self.OUTPUT_DIR = "output"
+                self.CV_HIGHLIGHT_HSV_RANGES = {}
+                self.JSON_INDENT = 2
+                self.OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
+                
+        config = DefaultConfig()
 
-# Import helper functions
-from .layoutlm_utils import extract_layoutlm_features
-from .vlm_utils import analyze_image_region_with_vlm
 from .cv_utils import detect_color_highlight_regions, detect_ink_regions
+from .vlm_utils import analyze_image_region_with_vlm
+from .layoutlm_utils import extract_layoutlm_features
+from .data_structures import (
+    BoundingBox, TextBlock, LegacyAnnotation, VisualElement, EquationElement, PageData,
+    DocumentMetadata, LegacyProcessedDocument, Document, Section, Paragraph, 
+    Annotation, ProcessedDocument
+)
 
 # --- Document Section Detection Functions ---
 
@@ -484,10 +499,19 @@ async def process_page_async(page: fitz.Page, page_num: int, total_pages: int) -
                     x1_pdf = cv_bbox['x1'] * (page_width / img_render_width)
                     y1_pdf = cv_bbox['y1'] * (page_height / img_render_height)
                     pdf_rect = fitz.Rect(x0_pdf, y0_pdf, x1_pdf, y1_pdf)
-                    text_in_cv_annot = None 
+                    
+                    # Extract text from the detected red regions
+                    text_in_cv_annot = page.get_text("text", clip=pdf_rect, sort=True).strip()
+                    
+                    # Determine if this is likely a comment or drawing based on position and text
+                    annot_type = "cv_drawing"
+                    if text_in_cv_annot or (x0_pdf < page_width * 0.2 or x0_pdf > page_width * 0.8):
+                        # If it has text or is in the margin, it's likely a comment
+                        annot_type = "comment"
+                    
                     annotation_obj = LegacyAnnotation(
-                        type="cv_drawing", bbox=pdf_coords_to_bbox(pdf_rect),
-                        text_content=None, color=None, 
+                        type=annot_type, bbox=pdf_coords_to_bbox(pdf_rect),
+                        text_content=text_in_cv_annot, color=None, 
                         detected_color_name="red"
                     )
                     extracted_annotations.append(annotation_obj)
@@ -640,7 +664,7 @@ async def process_document(pdf_path: str) -> Tuple[LegacyProcessedDocument, Proc
         in_appendix_section = False
         in_summary_section = False
         summary_sections = [] # Keep track of sections that might be summaries
-        
+
         for page_index in range(total_pages):
             page = doc[page_index]
             page_data = await process_page_async(page, page_index + 1, total_pages)
@@ -1002,16 +1026,53 @@ async def process_document(pdf_path: str) -> Tuple[LegacyProcessedDocument, Proc
                             
                             # If no match was found in the loop, keep defaults
                             if not match_found:
-                                # No specific text match, use entire paragraph reference as fallback
-                                prev_text = ""
-                                post_text = ""
+                                # For comments, try to find nearest text to associate with
+                                if annot.type == "comment" or annot.type == "cv_drawing":
+                                    # Find nearest paragraph text based on spatial proximity
+                                    if annot.bbox and para.bbox:
+                                        # Calculate proximity points (left, center, right of annotation)
+                                        annot_x_center = (annot.bbox.x0 + annot.bbox.x1) / 2
+                                        annot_y_bottom = annot.bbox.y1
+                                        
+                                        # Find nearest text in paragraph - use first 100 chars as context
+                                        preview_text = para.text[:min(100, len(para.text))]
+                                        referenced_text = preview_text
+                                        char_start = para.character_start
+                                        char_end = char_start + len(preview_text)
+                                        
+                                        # Get extended context
+                                        context_size = 100
+                                        if len(para.text) > context_size:
+                                            prev_text = para.text[:context_size//2]
+                                            post_text = para.text[context_size//2:context_size]
+                                        else:
+                                            prev_text = ""
+                                            post_text = para.text
+                                else:
+                                    # No specific text match, use entire paragraph reference as fallback
+                                    prev_text = ""
+                                    post_text = ""
                         
                         # Determine annotation type with improved handling
                         annot_type = annot.type
                         if annot_type == "cv_highlight":
                             annot_type = "highlight"
                         elif annot_type == "cv_drawing" or annot_type == "ink":
-                            annot_type = "ink" if annot.vertices else "symbol"
+                            # Improved detection logic for comments vs symbols
+                            if annot.detected_color_name == "red" and annot.bbox:
+                                # Get page dimensions from page_data
+                                page_width = page_data.dimensions[0] if page_data.dimensions and len(page_data.dimensions) == 2 else 612
+                                
+                                # Right margin
+                                if annot.bbox.x0 > page_width * 0.8:
+                                    annot_type = "comment"
+                                # Left margin
+                                elif annot.bbox.x1 < page_width * 0.2:
+                                    annot_type = "comment"
+                                else:
+                                    annot_type = "ink" if annot.vertices else "symbol"
+                            else:
+                                annot_type = "ink" if annot.vertices else "symbol"
                         
                         # Special handling for ink annotations with vertices
                         vertices = None
@@ -1040,7 +1101,7 @@ async def process_document(pdf_path: str) -> Tuple[LegacyProcessedDocument, Proc
                             previous_text=prev_text,
                             posterior_text=post_text,
                             paragraph_id=matched_para_id,
-                            annotated_text=referenced_text,  # For highlight, it duplicates referenced_text
+                            annotated_text=annot.text_content if annot_type == "comment" else referenced_text,  # Use text_content for comments
                             bbox=annot.bbox,
                             comment_info=annot.comment_info,
                             vertices=vertices,
@@ -1089,7 +1150,7 @@ async def process_document(pdf_path: str) -> Tuple[LegacyProcessedDocument, Proc
                             previous_text="",
                             posterior_text="",
                             paragraph_id=para_id,
-                            annotated_text=annot_text,
+                            annotated_text=annot.text_content if annot.type == "comment" else annot_text,
                             bbox=annot.bbox,
                             comment_info=annot.comment_info,
                             vertices=annot.vertices,
@@ -1177,7 +1238,7 @@ async def process_document(pdf_path: str) -> Tuple[LegacyProcessedDocument, Proc
                         break
         
         new_processed_doc.document.summary = summary_text
-        
+
         print("--- Document Processing Complete ---")
         return legacy_processed_doc, new_processed_doc
 

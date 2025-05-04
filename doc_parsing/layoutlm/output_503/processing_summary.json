@@ -1,0 +1,121 @@
+{
+  "ranked_by_comments": [
+    {
+      "filename": "agent_workflow_memory.pdf",
+      "total_annotations": 642,
+      "comment_count": 170,
+      "annotation_counts": {
+        "visual_element": 239,
+        "equation": 38,
+        "highlight": 175,
+        "comment": 170,
+        "symbol": 20
+      }
+    },
+    {
+      "filename": "cope.pdf",
+      "total_annotations": 632,
+      "comment_count": 135,
+      "annotation_counts": {
+        "visual_element": 269,
+        "highlight": 146,
+        "comment": 135,
+        "equation": 78,
+        "symbol": 4
+      }
+    },
+    {
+      "filename": "mSLAM.pdf",
+      "total_annotations": 325,
+      "comment_count": 121,
+      "annotation_counts": {
+        "highlight": 150,
+        "comment": 121,
+        "visual_element": 6,
+        "equation": 48
+      }
+    },
+    {
+      "filename": "cramming.pdf",
+      "total_annotations": 671,
+      "comment_count": 117,
+      "annotation_counts": {
+        "equation": 51,
+        "highlight": 475,
+        "comment": 117,
+        "visual_element": 17,
+        "symbol": 11
+      }
+    },
+    {
+      "filename": "mixture_of_million_experts.pdf",
+      "total_annotations": 407,
+      "comment_count": 96,
+      "annotation_counts": {
+        "visual_element": 100,
+        "equation": 29,
+        "highlight": 176,
+        "comment": 96,
+        "symbol": 6
+      }
+    },
+    {
+      "filename": "shortened_llama.pdf",
+      "total_annotations": 353,
+      "comment_count": 96,
+      "annotation_counts": {
+        "visual_element": 41,
+        "equation": 19,
+        "highlight": 197,
+        "comment": 96
+      }
+    },
+    {
+      "filename": "matryoshka_quantization.pdf",
+      "total_annotations": 554,
+      "comment_count": 79,
+      "annotation_counts": {
+        "visual_element": 206,
+        "equation": 170,
+        "highlight": 79,
+        "comment": 79,
+        "symbol": 20
+      }
+    },
+    {
+      "filename": "model_merging_at_scale.pdf",
+      "total_annotations": 673,
+      "comment_count": 75,
+      "annotation_counts": {
+        "visual_element": 268,
+        "equation": 30,
+        "highlight": 267,
+        "comment": 75,
+        "symbol": 33
+      }
+    },
+    {
+      "filename": "llms_cannot_plan.pdf",
+      "total_annotations": 301,
+      "comment_count": 73,
+      "annotation_counts": {
+        "visual_element": 102,
+        "equation": 16,
+        "highlight": 102,
+        "comment": 73,
+        "symbol": 8
+      }
+    },
+    {
+      "filename": "do_language_embeddings_capture_scales.pdf",
+      "total_annotations": 213,
+      "comment_count": 48,
+      "annotation_counts": {
+        "visual_element": 4,
+        "highlight": 146,
+        "comment": 48,
+        "equation": 15
+      }
+    }
+  ]
+}

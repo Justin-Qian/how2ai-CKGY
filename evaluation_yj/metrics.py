@@ -39,8 +39,8 @@ def calculate_rouge(reference, candidate):
         scorer = rouge_scorer.RougeScorer(['rouge1', 'rougeL'], use_stemmer=True)
         scores = scorer.score(reference, candidate)
         return {
-            "rouge-1": {"f": scores['rouge1'].fmeasure},
-            "rouge-l": {"f": scores['rougeL'].fmeasure}
+            "rouge-1": {"f": scores['rouge1'].recall},# use recall instead of fmeasure
+            "rouge-l": {"f": scores['rougeL'].recall}
         }
     except:
         return {"rouge-1": {"f": 0.0}, "rouge-l": {"f": 0.0}}

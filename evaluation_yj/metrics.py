@@ -5,6 +5,7 @@ import numpy as np
 def calculate_bleu(reference, candidate):
     """
     Calculate BLEU score between reference and candidate texts.
+    Note: This function is kept for reference but not used in the current evaluation.
 
     Args:
         reference (str): Reference text
@@ -33,17 +34,17 @@ def calculate_rouge(reference, candidate):
         candidate (str): Candidate text
 
     Returns:
-        dict: Dictionary with ROUGE-1 and ROUGE-L scores
+        dict: Dictionary with ROUGE-1 and ROUGE-L recall scores
     """
     try:
         scorer = rouge_scorer.RougeScorer(['rouge1', 'rougeL'], use_stemmer=True)
         scores = scorer.score(reference, candidate)
         return {
-            "rouge-1": {"f": scores['rouge1'].recall},# use recall instead of fmeasure
-            "rouge-l": {"f": scores['rougeL'].recall}
+            "rouge-1": {"recall": scores['rouge1'].recall},
+            "rouge-l": {"recall": scores['rougeL'].recall}
         }
     except:
-        return {"rouge-1": {"f": 0.0}, "rouge-l": {"f": 0.0}}
+        return {"rouge-1": {"recall": 0.0}, "rouge-l": {"recall": 0.0}}
 
 def highlight_R_P_F1(highlight, candidate):
     """
@@ -57,19 +58,19 @@ def highlight_R_P_F1(highlight, candidate):
         dict: Dictionary containing highlight-p (precision), highlight-r (recall) and highlight-f1 scores
     """
     try:
-        # 读取stopwords
+        # Read stopwords
         with open('stopwords.txt', 'r', encoding='utf-8') as f:
             stopwords = set(line.strip() for line in f)
 
-        # 使用集合差运算来过滤stopwords
+        # Filter stopwords using set difference
         highlight_tokens = set(highlight.lower().split()) - stopwords
         candidate_tokens = set(candidate.lower().split()) - stopwords
 
-        # 计算交集
+        # Calculate intersection
         intersection = highlight_tokens.intersection(candidate_tokens)
         intersection_size = len(intersection)
 
-        # 计算precision, recall 和 f1
+        # Calculate precision, recall and f1
         recall = intersection_size / len(highlight_tokens) if highlight_tokens else 0.0
         precision = intersection_size / len(candidate_tokens) if candidate_tokens else 0.0
         f1 = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0.0
@@ -97,19 +98,17 @@ def evaluate_text(reference, candidate, highlight):
         highlight (str): Highlight text to check coverage against candidate
 
     Returns:
-        dict: Dictionary with all evaluation metrics including BLEU, ROUGE scores and highlight coverage metrics
+        dict: Dictionary with ROUGE scores and highlight coverage metrics
     """
-    bleu = calculate_bleu(reference, candidate)
     rouge = calculate_rouge(reference, candidate)
     highlight_scores = highlight_R_P_F1(highlight, candidate)
 
     # Extract ROUGE scores
-    rouge_1 = rouge["rouge-1"]["f"]
-    rouge_l = rouge["rouge-l"]["f"]
+    rouge_1 = rouge["rouge-1"]["recall"]
+    rouge_l = rouge["rouge-l"]["recall"]
 
-    # Calculate overall score
+    # Return metrics without BLEU score
     metrics = {
-        "bleu": bleu,
         "rouge-1": rouge_1,
         "rouge-L": rouge_l,
         "highlight-p": highlight_scores["highlight-p"],

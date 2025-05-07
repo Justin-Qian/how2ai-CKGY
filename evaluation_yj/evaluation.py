@@ -15,16 +15,16 @@ def load_summaries(filename: str) -> Dict[str, str]:
         Dict[str, str]: Dictionary containing original and generated summaries
     """
     # Load original summary
-    original_path = os.path.join("original_summary", f"{filename}.txt")
-    with open(original_path, "r", encoding="utf-8") as f:
-        original_summary = f.read().strip()
+    original_path = os.path.join("original_summary", f"{filename}.csv")
+    original_df = pd.read_csv(original_path)
+    original_summary = original_df.loc[original_df["mode"] == "ORIGINAL", "generated_summary"].iloc[0]
 
     # Load generated summaries
     generated_path = os.path.join("baseline01_summary", f"{filename}.csv")
     generated_df = pd.read_csv(generated_path)
 
     summaries = {
-        "original": original_summary,
+        "ORIGINAL": original_summary,
         "annotations": generated_df.loc[generated_df["mode"] == "A-ONLY", "generated_summary"].iloc[0]
     }
 
@@ -49,11 +49,11 @@ def evaluate_file(filename: str) -> pd.DataFrame:
 
     # Evaluate each mode
     results = []
-    modes = ["B-TEXT", "A-TAG", "A-ONLY", "A-ADD"]
+    modes = ["ORIGINAL", "B-TEXT", "A-TAG", "A-ONLY", "A-ADD"]
 
     for mode in modes:
         metrics = evaluate_text(
-            reference=summaries["original"],
+            reference=summaries["ORIGINAL"],
             candidate=summaries[mode],
             highlight=summaries["annotations"]
         )
@@ -64,11 +64,12 @@ def evaluate_file(filename: str) -> pd.DataFrame:
         })
         results.append(metrics)
 
+
     return pd.DataFrame(results)
 
 def main():
     # Get all original summary files
-    original_files = glob.glob(os.path.join("original_summary", "*.txt"))
+    original_files = glob.glob(os.path.join("original_summary", "*.csv"))
 
     # Extract base filenames without extension
     filenames = [os.path.splitext(os.path.basename(f))[0] for f in original_files]
@@ -97,7 +98,7 @@ def main():
 
         # Calculate and save average metrics across all files
         avg_metrics = combined_results.groupby("mode")[
-            ["bleu", "rouge-1", "rouge-L", "highlight-p", "highlight-r", "highlight-f1"]
+            ["rouge-1", "rouge-L", "highlight-p", "highlight-r", "highlight-f1"]
         ].mean()
 
         # Save average metrics

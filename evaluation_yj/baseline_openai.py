@@ -195,11 +195,15 @@ def main():
     print("Loading data...")
     original_summary, df_b, df_at, df_ao = load_data(json_path)
 
-    # Save original summary
-    original_summary_path = os.path.join(original_summary_dir, f"{json_filename}.txt")
-    os.makedirs(os.path.dirname(original_summary_path), exist_ok=True)
-    with open(original_summary_path, "w", encoding="utf-8") as f:
-        f.write(original_summary)
+    # Save original summary in CSV format
+    os.makedirs(original_summary_dir, exist_ok=True)
+    original_df = pd.DataFrame([{
+        "doc_id": df_b["doc_id"].iloc[0],
+        "mode": "ORIGINAL",
+        "generated_summary": original_summary
+    }])
+    original_path = os.path.join(original_summary_dir, f"{json_filename}.csv")
+    original_df.to_csv(original_path, index=False)
 
     # Generate summaries
     print("Generating summaries...")
@@ -211,7 +215,7 @@ def main():
     results.to_csv(results_path, index=False)
 
     print(f"Generation complete! Results saved to:")
-    print(f"- Original summary: {original_summary_path}")
+    print(f"- Original summary: {original_path}")
     print(f"- Generated summaries: {results_path}")
 
 if __name__ == "__main__":

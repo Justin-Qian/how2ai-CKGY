@@ -143,7 +143,7 @@ def load_data(json_path: str) -> Tuple[str, pd.DataFrame, pd.DataFrame, pd.DataF
     return original_summary, df_b, df_at, df_ao
 
 def generate_all_summaries(df_b: pd.DataFrame, df_at: pd.DataFrame,
-                         df_ao: pd.DataFrame, baseline: OpenAIBaseline) -> pd.DataFrame:
+                         df_ao: pd.DataFrame, baseline: OpenAIBaseline) -> Dict[str, pd.DataFrame]:
     """
     Generate summaries using different modes
 
@@ -154,7 +154,7 @@ def generate_all_summaries(df_b: pd.DataFrame, df_at: pd.DataFrame,
         baseline (OpenAIBaseline): OpenAI baseline model instance
 
     Returns:
-        pd.DataFrame: Generated summaries
+        Dict[str, pd.DataFrame]: Dictionary containing DataFrames for each mode
     """
     doc_id = df_b["doc_id"].iloc[0]
     txt_b = df_b["text"].iloc[0]
@@ -167,56 +167,102 @@ def generate_all_summaries(df_b: pd.DataFrame, df_at: pd.DataFrame,
     s_ao = baseline.generate_summary(ann_o, "A-ONLY")
     s_add = baseline.generate_summary(txt_b, "A-ADD", annotations=ann_o)
 
-    # Record summaries
-    records = []
-    for mode, summary in [("B-TEXT", s_b), ("A-TAG", s_at),
-                         ("A-ONLY", s_ao), ("A-ADD", s_add)]:
-        records.append({
+    # Create DataFrames for each mode
+    dfs = {
+        "B-TEXT": pd.DataFrame([{
             "doc_id": doc_id,
-            "mode": mode,
-            "generated_summary": summary
-        })
+            "mode": "B-TEXT",
+            "generated_summary": s_b
+        }]),
+        "A-TAG": pd.DataFrame([{
+            "doc_id": doc_id,
+            "mode": "A-TAG",
+            "generated_summary": s_at
+        }]),
+        "A-ONLY": pd.DataFrame([{
+            "doc_id": doc_id,
+            "mode": "A-ONLY",
+            "generated_summary": s_ao
+        }]),
+        "A-ADD": pd.DataFrame([{
+            "doc_id": doc_id,
+            "mode": "A-ADD",
+            "generated_summary": s_add
+        }])
+    }
 
-    return pd.DataFrame(records)
+    return dfs
 
 def main():
     # Set paths
-    json_path = "data/agent_workflow_memory_processed.json"
-    original_summary_dir = "original_summary"
-    generated_summary_dir = "baseline01_summary"
+    data_dir = "data"
+    output_dir = "generated_summary"
 
-    # Get json filename without extension
-    json_filename = os.path.splitext(os.path.basename(json_path))[0]
+    # Create output directory
+    os.makedirs(output_dir, exist_ok=True)
 
     # Initialize baseline model
     baseline = OpenAIBaseline()
 
-    # Load data
-    print("Loading data...")
-    original_summary, df_b, df_at, df_ao = load_data(json_path)
+    # Get all JSON files in the data directory
+    json_files = [f for f in os.listdir(data_dir) if f.endswith('.json')]
 
-    # Save original summary in CSV format
-    os.makedirs(original_summary_dir, exist_ok=True)
-    original_df = pd.DataFrame([{
-        "doc_id": df_b["doc_id"].iloc[0],
-        "mode": "ORIGINAL",
-        "generated_summary": original_summary
-    }])
-    original_path = os.path.join(original_summary_dir, f"{json_filename}.csv")
-    original_df.to_csv(original_path, index=False)
+    print(f"Found {len(json_files)} JSON files to process")
 
-    # Generate summaries
-    print("Generating summaries...")
-    results = generate_all_summaries(df_b, df_at, df_ao, baseline)
+    # Initialize DataFrames for each mode
+    mode_dfs = {
+        "ORIGINAL": pd.DataFrame(columns=["doc_id", "mode", "generated_summary"]),
+        "B-TEXT": pd.DataFrame(columns=["doc_id", "mode", "generated_summary"]),
+        "A-TAG": pd.DataFrame(columns=["doc_id", "mode", "generated_summary"]),
+        "A-ONLY": pd.DataFrame(columns=["doc_id", "mode", "generated_summary"]),
+        "A-ADD": pd.DataFrame(columns=["doc_id", "mode", "generated_summary"])
+    }
 
-    # Save generated summaries as CSV
-    os.makedirs(generated_summary_dir, exist_ok=True)
-    results_path = os.path.join(generated_summary_dir, f"{json_filename}.csv")
-    results.to_csv(results_path, index=False)
+    # Process each JSON file
+    for json_file in json_files:
+        json_path = os.path.join(data_dir, json_file)
+        json_filename = os.path.splitext(json_file)[0]
 
-    print(f"Generation complete! Results saved to:")
-    print(f"- Original summary: {original_path}")
-    print(f"- Generated summaries: {results_path}")
+        print(f"\nProcessing {json_file}...")
+
+        try:
+            # Load data
+            print("Loading data...")
+            original_summary, df_b, df_at, df_ao = load_data(json_path)
+
+            # Add original summary
+            mode_dfs["ORIGINAL"] = pd.concat([
+                mode_dfs["ORIGINAL"],
+                pd.DataFrame([{
+                    "doc_id": df_b["doc_id"].iloc[0],
+                    "mode": "ORIGINAL",
+                    "generated_summary": original_summary
+                }])
+            ], ignore_index=True)
+
+            # Generate summaries
+            print("Generating summaries...")
+            summaries = generate_all_summaries(df_b, df_at, df_ao, baseline)
+
+            # Add generated summaries to respective DataFrames
+            for mode, df in summaries.items():
+                mode_dfs[mode] = pd.concat([mode_dfs[mode], df], ignore_index=True)
+
+            print(f"✅ Completed {json_file}")
+
+        except Exception as e:
+            print(f"❌ Error processing {json_file}: {str(e)}")
+            continue
+
+    # Save results for each mode
+    print("\nSaving results...")
+    for mode, df in mode_dfs.items():
+        if not df.empty:  # Only save if we have records for this mode
+            output_file = os.path.join(output_dir, f"{mode.replace('-', '_')}.csv")
+            df.to_csv(output_file, index=False)
+            print(f"✅ Saved {mode} results to {output_file}")
+
+    print("\nAll files processed!")
 
 if __name__ == "__main__":
     main()

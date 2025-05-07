@@ -4,93 +4,106 @@ from metrics import evaluate_text
 from typing import Dict, List
 import glob
 
-def load_summaries(filename: str) -> Dict[str, str]:
+def load_summaries() -> Dict[str, pd.DataFrame]:
     """
-    Load original and generated summaries for a given filename
-
-    Args:
-        filename (str): Base filename without extension
+    Load all summary files from generated_summary directory
 
     Returns:
-        Dict[str, str]: Dictionary containing original and generated summaries
+        Dict[str, pd.DataFrame]: Dictionary containing DataFrames for each mode
     """
-    # Load original summary
-    original_path = os.path.join("original_summary", f"{filename}.csv")
-    original_df = pd.read_csv(original_path)
-    original_summary = original_df.loc[original_df["mode"] == "ORIGINAL", "generated_summary"].iloc[0]
-
-    # Load generated summaries
-    generated_path = os.path.join("baseline01_summary", f"{filename}.csv")
-    generated_df = pd.read_csv(generated_path)
-
-    summaries = {
-        "ORIGINAL": original_summary,
-        "annotations": generated_df.loc[generated_df["mode"] == "A-ONLY", "generated_summary"].iloc[0]
+    summary_dir = "generated_summary"
+    mode_files = {
+        "ORIGINAL": "ORIGINAL.csv",
+        "B-TEXT": "B_TEXT.csv",
+        "A-TAG": "A_TAG.csv",
+        "A-ONLY": "A_ONLY.csv",
+        "A-ADD": "A_ADD.csv"
     }
 
-    # Add generated summaries by mode
-    for _, row in generated_df.iterrows():
-        summaries[row["mode"]] = row["generated_summary"]
+    summaries = {}
+    for mode, filename in mode_files.items():
+        file_path = os.path.join(summary_dir, filename)
+        if os.path.exists(file_path):
+            summaries[mode] = pd.read_csv(file_path)
+        else:
+            print(f"Warning: {filename} not found in {summary_dir}")
 
     return summaries
 
-def evaluate_file(filename: str) -> pd.DataFrame:
+def evaluate_file(doc_id: str, summaries: Dict[str, pd.DataFrame]) -> pd.DataFrame:
     """
-    Evaluate summaries for a single file
+    Evaluate summaries for a single document
 
     Args:
-        filename (str): Base filename without extension
+        doc_id (str): Document ID
+        summaries (Dict[str, pd.DataFrame]): Dictionary containing all summary DataFrames
 
     Returns:
         pd.DataFrame: Evaluation results
     """
-    # Load summaries
-    summaries = load_summaries(filename)
+    # Get original summary
+    original_summary = summaries["ORIGINAL"].loc[
+        summaries["ORIGINAL"]["doc_id"] == doc_id, "generated_summary"
+    ].iloc[0]
+
+    # Get annotations (from A-ONLY mode)
+    annotations = summaries["A-ONLY"].loc[
+        summaries["A-ONLY"]["doc_id"] == doc_id, "generated_summary"
+    ].iloc[0]
 
     # Evaluate each mode
     results = []
     modes = ["ORIGINAL", "B-TEXT", "A-TAG", "A-ONLY", "A-ADD"]
 
     for mode in modes:
-        metrics = evaluate_text(
-            reference=summaries["ORIGINAL"],
-            candidate=summaries[mode],
-            highlight=summaries["annotations"]
-        )
+        if mode in summaries:
+            candidate_summary = summaries[mode].loc[
+                summaries[mode]["doc_id"] == doc_id, "generated_summary"
+            ].iloc[0]
 
-        metrics.update({
-            "filename": filename,
-            "mode": mode
-        })
-        results.append(metrics)
+            metrics = evaluate_text(
+                reference=original_summary,
+                candidate=candidate_summary,
+                highlight=annotations
+            )
 
+            metrics.update({
+                "doc_id": doc_id,
+                "mode": mode
+            })
+            results.append(metrics)
 
     return pd.DataFrame(results)
 
 def main():
-    # Get all original summary files
-    original_files = glob.glob(os.path.join("original_summary", "*.csv"))
-
-    # Extract base filenames without extension
-    filenames = [os.path.splitext(os.path.basename(f))[0] for f in original_files]
-
     # Create results directory if it doesn't exist
     os.makedirs("results", exist_ok=True)
 
-    # Process each file
+    # Load all summaries
+    print("Loading summaries...")
+    summaries = load_summaries()
+
+    if not summaries:
+        print("No summary files found!")
+        return
+
+    # Get unique document IDs from ORIGINAL summaries
+    doc_ids = summaries["ORIGINAL"]["doc_id"].unique()
+
+    # Process each document
     all_results = []
-    for filename in filenames:
+    for doc_id in doc_ids:
         try:
-            results = evaluate_file(filename)
+            results = evaluate_file(doc_id, summaries)
             all_results.append(results)
 
             # Save individual file results
-            results_path = os.path.join("results", f"{filename}_metrics.csv")
+            results_path = os.path.join("results", f"{doc_id}_metrics.csv")
             results.to_csv(results_path, index=False)
-            print(f"Saved metrics for {filename} to {results_path}")
+            print(f"Saved metrics for {doc_id} to {results_path}")
 
         except Exception as e:
-            print(f"Error processing {filename}: {str(e)}")
+            print(f"Error processing {doc_id}: {str(e)}")
 
     if all_results:
         # Combine all results

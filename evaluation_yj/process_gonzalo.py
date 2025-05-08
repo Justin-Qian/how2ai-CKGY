@@ -98,8 +98,8 @@ def process_file(input_file: str, output_dir: str) -> None:
 
 def main():
     # Define input and output directories
-    input_dir = "generated_summary/Gonzalo"
-    output_dir = "generated_summary/PRO_GONZALO"
+    input_dir = "generated_summary/GONZALO_filtered"
+    output_dir = "generated_summary/PRO_GONZALO_filtered"
 
     # Create output directory if it doesn't exist
     os.makedirs(output_dir, exist_ok=True)

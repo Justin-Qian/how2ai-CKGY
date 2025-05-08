@@ -12,7 +12,7 @@ def load_summaries() -> Dict[str, pd.DataFrame]:
         Dict[str, pd.DataFrame]: Dictionary containing DataFrames for each mode
     """
     summary_dir = "generated_summary"
-    pro_gonzalo_dir = os.path.join(summary_dir, "PRO_GONZALO")
+    pro_gonzalo_dir = os.path.join(summary_dir, "PRO_GONZALO_filtered")
 
     # Load highlight annotations
     highlight_path = os.path.join(summary_dir, "highlight.csv")
@@ -76,7 +76,7 @@ def evaluate_file(doc_id: str, summaries: Dict[str, pd.DataFrame]) -> pd.DataFra
 def main():
     # Create results directory if it doesn't exist
     os.makedirs("results", exist_ok=True)
-    os.makedirs("results/GONZALO_RESULT", exist_ok=True)
+    os.makedirs("results/GONZALO_FILTERED_RESULT", exist_ok=True)
 
     # Load all summaries
     print("Loading summaries...")
@@ -101,7 +101,7 @@ def main():
             all_results.append(results)
 
             # Save individual file results
-            results_path = os.path.join("results/GONZALO_RESULT", f"{doc_id}_metrics.csv")
+            results_path = os.path.join("results/GONZALO_FILTERED_RESULT", f"{doc_id}_metrics.csv")
             results.to_csv(results_path, index=False)
             print(f"Saved metrics for {doc_id} to {results_path}")
 
@@ -118,7 +118,7 @@ def main():
         ].mean()
 
         # Save average metrics
-        avg_path = os.path.join("results/GONZALO_RESULT", "average_metrics.csv")
+        avg_path = os.path.join("results/GONZALO_FILTERED_RESULT", "average_metrics.csv")
         avg_metrics.to_csv(avg_path)
         print(f"\nSaved average metrics to {avg_path}")
 
@@ -127,7 +127,7 @@ def main():
         print(avg_metrics)
 
         # Save detailed results
-        detailed_path = os.path.join("results/GONZALO_RESULT", "detailed_metrics.csv")
+        detailed_path = os.path.join("results/GONZALO_FILTERED_RESULT", "detailed_metrics.csv")
         combined_results.to_csv(detailed_path, index=False)
         print(f"Saved detailed metrics to {detailed_path}")
 

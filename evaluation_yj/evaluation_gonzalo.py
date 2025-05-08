@@ -6,34 +6,28 @@ import glob
 
 def load_summaries() -> Dict[str, pd.DataFrame]:
     """
-    Load all summary files from generated_summary directory
+    Load all summary files from PRO_GONZALO directory and highlight file
 
     Returns:
         Dict[str, pd.DataFrame]: Dictionary containing DataFrames for each mode
     """
     summary_dir = "generated_summary"
-    mode_files = {
-        "ORIGINAL": "ORIGINAL.csv",
-        "B-TEXT": "B_TEXT.csv",
-        "A-TAG": "A_TAG.csv",
-        "A-ONLY": "A_ONLY.csv",
-        "A-ADD": "A_ADD.csv"
-    }
-
-    summaries = {}
-    for mode, filename in mode_files.items():
-        file_path = os.path.join(summary_dir, filename)
-        if os.path.exists(file_path):
-            summaries[mode] = pd.read_csv(file_path)
-        else:
-            print(f"Warning: {filename} not found in {summary_dir}")
+    pro_gonzalo_dir = os.path.join(summary_dir, "PRO_GONZALO")
 
     # Load highlight annotations
     highlight_path = os.path.join(summary_dir, "highlight.csv")
-    if os.path.exists(highlight_path):
-        summaries["HIGHLIGHT"] = pd.read_csv(highlight_path)
-    else:
+    if not os.path.exists(highlight_path):
         raise FileNotFoundError(f"Highlight file not found at {highlight_path}")
+
+    summaries = {
+        "HIGHLIGHT": pd.read_csv(highlight_path)
+    }
+
+    # Load all CSV files from PRO_GONZALO directory
+    csv_files = glob.glob(os.path.join(pro_gonzalo_dir, "*.csv"))
+    for csv_file in csv_files:
+        mode = os.path.splitext(os.path.basename(csv_file))[0]
+        summaries[mode] = pd.read_csv(csv_file)
 
     return summaries
 
@@ -48,11 +42,6 @@ def evaluate_file(doc_id: str, summaries: Dict[str, pd.DataFrame]) -> pd.DataFra
     Returns:
         pd.DataFrame: Evaluation results
     """
-    # Get original summary
-    original_summary = summaries["ORIGINAL"].loc[
-        summaries["ORIGINAL"]["doc_id"] == doc_id, "generated_summary"
-    ].iloc[0]
-
     # Get highlight annotations
     highlight = summaries["HIGHLIGHT"].loc[
         summaries["HIGHLIGHT"]["doc_id"] == doc_id, "highlight"
@@ -60,16 +49,16 @@ def evaluate_file(doc_id: str, summaries: Dict[str, pd.DataFrame]) -> pd.DataFra
 
     # Evaluate each mode
     results = []
-    modes = ["ORIGINAL", "B-TEXT", "A-TAG", "A-ONLY", "A-ADD"]
+    modes = [mode for mode in summaries.keys() if mode != "HIGHLIGHT"]
 
     for mode in modes:
-        if mode in summaries:
+        try:
             candidate_summary = summaries[mode].loc[
                 summaries[mode]["doc_id"] == doc_id, "generated_summary"
             ].iloc[0]
 
             metrics = evaluate_text(
-                reference=original_summary,
+                reference=highlight,  # Use highlight as reference
                 candidate=candidate_summary,
                 highlight=highlight
             )
@@ -79,23 +68,30 @@ def evaluate_file(doc_id: str, summaries: Dict[str, pd.DataFrame]) -> pd.DataFra
                 "mode": mode
             })
             results.append(metrics)
+        except Exception as e:
+            print(f"Error evaluating {mode} for {doc_id}: {str(e)}")
 
     return pd.DataFrame(results)
 
 def main():
     # Create results directory if it doesn't exist
     os.makedirs("results", exist_ok=True)
+    os.makedirs("results/GONZALO_RESULT", exist_ok=True)
 
     # Load all summaries
     print("Loading summaries...")
-    summaries = load_summaries()
+    try:
+        summaries = load_summaries()
+    except Exception as e:
+        print(f"Error loading summaries: {str(e)}")
+        return
 
     if not summaries:
         print("No summary files found!")
         return
 
-    # Get unique document IDs from ORIGINAL summaries
-    doc_ids = summaries["ORIGINAL"]["doc_id"].unique()
+    # Get unique document IDs from highlight file
+    doc_ids = summaries["HIGHLIGHT"]["doc_id"].unique()
 
     # Process each document
     all_results = []
@@ -105,7 +101,7 @@ def main():
             all_results.append(results)
 
             # Save individual file results
-            results_path = os.path.join("results", f"{doc_id}_metrics.csv")
+            results_path = os.path.join("results/GONZALO_RESULT", f"{doc_id}_metrics.csv")
             results.to_csv(results_path, index=False)
             print(f"Saved metrics for {doc_id} to {results_path}")
 
@@ -122,7 +118,7 @@ def main():
         ].mean()
 
         # Save average metrics
-        avg_path = os.path.join("results", "average_metrics.csv")
+        avg_path = os.path.join("results/GONZALO_RESULT", "average_metrics.csv")
         avg_metrics.to_csv(avg_path)
         print(f"\nSaved average metrics to {avg_path}")
 
@@ -131,7 +127,7 @@ def main():
         print(avg_metrics)
 
         # Save detailed results
-        detailed_path = os.path.join("results", "detailed_metrics.csv")
+        detailed_path = os.path.join("results/GONZALO_RESULT", "detailed_metrics.csv")
         combined_results.to_csv(detailed_path, index=False)
         print(f"Saved detailed metrics to {detailed_path}")
 
